@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
+import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
+import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
 
 class SearchBarTile extends StatelessWidget{
   const SearchBarTile({super.key});
@@ -11,22 +14,31 @@ class SearchBarTile extends StatelessWidget{
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              height: 30,
-              //width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(50)
-              ),
+            child: SearchBar(
+              hintText: 'Search',
+                hintStyle: MaterialStateProperty.all(
+                  TextStyles.greyTextStyle
+                ),
+                elevation: MaterialStateProperty.all(0),
+              leading: const Icon(Icons.search,
+              color: MyColors.orangeColor,
+                size: Sizes.iconSearchButtonSize,
 
+              ),
             ),
           ),
           const SizedBox(width: 15),
           Container(
             height: 30,
             width: 30,
-            color: Colors.redAccent,
-            child:  const Icon(Icons.ac_unit_rounded),
+            decoration: BoxDecoration(
+              color: MyColors.orangeColor,
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child:  const Icon(Icons.dashboard_customize,
+            color: MyColors.whiteColor,
+              size: Sizes.iconSearchButtonSize,
+            ),
           )
         ],
       ),

@@ -11,11 +11,14 @@ class HotSalesImage extends StatelessWidget{
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.grey,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child:  Image.asset('merkava.jpg'),
+        borderRadius: BorderRadius.circular(10),
+        child:  Image.asset(
+          'assets/images/merkava.jpg',
+        fit: BoxFit.fill,
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 
 class ExampleCategorys extends StatelessWidget{
   const ExampleCategorys({super.key, required this.icon, required this.title});
@@ -10,7 +11,6 @@ class ExampleCategorys extends StatelessWidget{
     return Container(
       width: 60,
       height: 90,
-      color: Colors.grey,
       child: Column(
         children: [
           Container(
@@ -18,10 +18,13 @@ class ExampleCategorys extends StatelessWidget{
             height: 60,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(60),
-              color: Colors.redAccent,
+              color: MyColors.whiteColor,
             ),
-            child: Icon(icon),
+            child: Icon(icon,
+            color: MyColors.greyColor,
+            ),
           ),
+          const SizedBox(height: 5),
           Text(title),
         ],
       ),
