@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/first_screen/best_seller_tile.dart';
 import 'package:udemy_shit_verstka/first_screen/categorys_tile.dart';
 import 'package:udemy_shit_verstka/first_screen/gridview_best_seller.dart';
@@ -13,16 +14,19 @@ class FirstPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(240, 240, 255, 1),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+      color: MyColors.pageBackground,
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
-          child: const Column(
+          child: Column(
             children: [
               SelectCategoryTile(),
               CategorysTile(),
               SizedBox(height: 15),
-              SearchBarTile(),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: SearchBarTile(),
+              ),
               HotSalesTile(),
               HotSalesImage(),
               BestSellerTile(),
