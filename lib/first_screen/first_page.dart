@@ -15,21 +15,21 @@ class FirstPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       color: MyColors.pageBackground,
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SelectCategoryTile(),
-              CategorysTile(),
-              SizedBox(height: 15),
-              Padding(
+              const SelectCategoryTile(),
+              const CategorysTile(),
+              const SizedBox(height: 15),
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: SearchBarTile(),
               ),
-              HotSalesTile(),
-              HotSalesImage(),
-              BestSellerTile(),
+              const HotSalesTile(),
+              const HotSalesImage(),
+              const BestSellerTile(),
               GridviewBestSeller(),
             ],
           ),

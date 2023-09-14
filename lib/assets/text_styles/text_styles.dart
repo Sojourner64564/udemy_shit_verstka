@@ -5,6 +5,7 @@ class TextStyles{
   static const TextStyle hugeFontStyle = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
+    color: MyColors.deepBlueColor,
   );
   static const TextStyle smallOrangeStyle = TextStyle(
     fontSize: 13,

@@ -8,7 +8,7 @@ class ExampleCategorys extends StatelessWidget{
     
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 60,
       height: 90,
       child: Column(
