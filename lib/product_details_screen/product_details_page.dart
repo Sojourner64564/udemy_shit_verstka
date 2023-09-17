@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/RowOfButtonCubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector_tile.dart';
+import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
+import 'package:udemy_shit_verstka/product_details_screen/widgets/add_to_cart_button.dart';
+import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_and_memory_selector_tile.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/pageview_tile_device_characteristic.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/row_of_button_tile.dart';
 
@@ -10,6 +12,7 @@ class ProductDetailsPage extends StatelessWidget {
   ProductDetailsPage({super.key});
 
  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
+  final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ProductDetailsPage extends StatelessWidget {
             const Expanded(child: SizedBox()),
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.50,
               decoration: BoxDecoration(
                   boxShadow: const [
                     BoxShadow(
@@ -34,13 +37,13 @@ class ProductDetailsPage extends StatelessWidget {
                   ],
                   borderRadius: BorderRadius.circular(20),
                   color: MyColors.whiteColor),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 25),
-                    Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Row(
                       children: [
                         const Text(
                           'Galaxy Note 20 Ultra',
@@ -61,20 +64,37 @@ class ProductDetailsPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
-                    const Text('Звёздочки'),
-                    const SizedBox(height: 15),
-                    RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit,),
-                    const SizedBox(height: 15),
-                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit,),
-                    const SizedBox(height: 10),
-                    const Text('Select color and capacity',
+                  ),
+                  const SizedBox(height: 5),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Text('Звёздочки'),
+                  ),
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
+                  ),
+                  const SizedBox(height: 15),
+                  PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
+                  const SizedBox(height: 15),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Text('Select color and capacity',
                     style: TextStyles.forColorSelectorText,
                     ),
-                    const ColorAndMemorySelectorTile(),
-
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: ColorAndMemorySelectorTile(),
+                  ),
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: AddToCartButton(cost: '1,500'),
+                  ),
+                ],
               ),
             ),
           ],       ),

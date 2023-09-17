@@ -69,4 +69,19 @@ class TextStyles{
     fontWeight: FontWeight.w500,
     color: MyColors.deepBlueColor,
   );
+  static const TextStyle forActiveMemoryButtonText = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: MyColors.whiteColor,
+  );
+  static const TextStyle forInactiveMemoryButtonText = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: MyColors.greyColor,
+  );
+  static const TextStyle forAddToCartButtonText = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: MyColors.whiteColor,
+  );
 }

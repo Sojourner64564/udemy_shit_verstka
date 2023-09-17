@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/RowOfButtonCubit.dart';
+import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/active_button_from_row.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/inactive_button_from_row.dart';
 
 class RowOfButtonTile extends StatelessWidget {
-  RowOfButtonTile({super.key, required this.rowOfButtonCubit});
+  const RowOfButtonTile({super.key, required this.rowOfButtonCubit, required this.animationOfRowButton});
 
+  final AnimationOfRowButton animationOfRowButton;
   final RowOfButtonCubit rowOfButtonCubit;
   firstButton() => rowOfButtonCubit.firstButton();
   secondButton() => rowOfButtonCubit.secondButton();
@@ -14,59 +17,78 @@ class RowOfButtonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final bruh = (MediaQuery.of(context).size.width-60-100)/2;
+    return BlocBuilder<AnimationOfRowButton, double>(
+      bloc: animationOfRowButton,
+      builder: (context, state) {
+    return Stack(
       children: [
-        //TODO --------------------------------------------------------------------
-        GestureDetector(
-          onTap: (){
-            firstButton();
-            },
-          child: BlocBuilder<RowOfButtonCubit, int>(
-            bloc: rowOfButtonCubit,
-            builder: (context, state) {
-              if(state==0) {
-                return const ActiveButtonFromRow(title: 'Shop',);
-              }else{
-                return const InactiveButtonFromRow(title: 'Shop');
-              }
-            },
-          ),
+        Positioned(
+
+          left: state*bruh,
+            child:Container(
+              height: 35,
+              width: MediaQuery.of(context).size.width/4.1,
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(width: 2, color: MyColors.orangeColor),
+                ),
+              ),
+            ),
         ),
-        //TODO --------------------------------------------------------------------
-        GestureDetector(
-          onTap: (){
-            secondButton();
-          },
-          child: BlocBuilder<RowOfButtonCubit, int>(
-            bloc: rowOfButtonCubit,
-            builder: (context, state) {
-              if(state==1) {
-                return const ActiveButtonFromRow(title: 'Details',);
-              }else{
-                return const InactiveButtonFromRow(title: 'Details');
-              }
-            },
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: (){
+                firstButton();
+                },
+              child: BlocBuilder<RowOfButtonCubit, int>(
+                bloc: rowOfButtonCubit,
+                builder: (context, state) {
+                  if(state==0) {
+                    return const ActiveButtonFromRow(title: 'Shop');
+                  }else{
+                    return const InactiveButtonFromRow(title: 'Shop');
+                  }
+                },
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                secondButton();
+              },
+              child: BlocBuilder<RowOfButtonCubit, int>(
+                bloc: rowOfButtonCubit,
+                builder: (context, state) {
+                  if(state==1) {
+                    return const ActiveButtonFromRow(title: 'Details',);
+                  }else{
+                    return const InactiveButtonFromRow(title: 'Details');
+                  }
+                },
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                thirdButton();
+                },
+              child: BlocBuilder<RowOfButtonCubit, int>(
+                bloc: rowOfButtonCubit,
+                builder: (context, state) {
+                  if(state==2) {
+                    return const ActiveButtonFromRow(title: 'Features',);
+                  }else{
+                    return const InactiveButtonFromRow(title: 'Features');
+                  }
+                },
+              ),
+            ),
+          ],
         ),
-        //TODO --------------------------------------------------------------------
-        GestureDetector(
-          onTap: (){
-            thirdButton();
-            },
-          child: BlocBuilder<RowOfButtonCubit, int>(
-            bloc: rowOfButtonCubit,
-            builder: (context, state) {
-              if(state==2) {
-                return const ActiveButtonFromRow(title: 'Features',);
-              }else{
-                return const InactiveButtonFromRow(title: 'Features');
-              }
-            },
-          ),
-        ),
-        //TODO --------------------------------------------------------------------
       ],
     );
+  },
+);
   }
 }

@@ -14,7 +14,7 @@ class ActiveButtonFromRow extends StatelessWidget{
       width: MediaQuery.of(context).size.width/4.1,
       decoration: const BoxDecoration(
         border: Border(
-          bottom: BorderSide(width: 2, color: MyColors.orangeColor),
+          //bottom: BorderSide(width: 2, color: MyColors.orangeColor),
         ),
       ),
       child: Padding(
