@@ -29,7 +29,7 @@ class _PageviewTileDeviceCharacteristicState extends State<PageviewTileDeviceCha
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 61,
       width: double.infinity,
       child: PageView(
         controller: widget.rowOfButtonCubit.pageController,
