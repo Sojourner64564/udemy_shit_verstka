@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/first_screen/widgets/modal_bottom_bar/modal_bottom_bar.dart';
 
 class SearchBarTile extends StatelessWidget{
   const SearchBarTile({super.key});
@@ -28,16 +29,25 @@ class SearchBarTile extends StatelessWidget{
             ),
           ),
           const SizedBox(width: 15),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: BoxDecoration(
-              color: MyColors.orangeColor,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child:  const Icon(Icons.dashboard_customize,
-            color: MyColors.whiteColor,
-              size: Sizes.iconSearchButtonSize,
+          GestureDetector(
+            onTap: (){
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context){
+                    return ModalBottomBar();
+                  });
+            },
+            child: Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                color: MyColors.orangeColor,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child:  const Icon(Icons.dashboard_customize,
+              color: MyColors.whiteColor,
+                size: Sizes.iconSearchButtonSize,
+              ),
             ),
           )
         ],

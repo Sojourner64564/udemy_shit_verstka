@@ -21,7 +21,7 @@ class FirstPage extends StatelessWidget{
           child: Column(
             children: [
               const SelectCategoryTile(),
-              const CategorysTile(),
+              CategorysTile(),
               const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
@@ -31,6 +31,7 @@ class FirstPage extends StatelessWidget{
               const HotSalesImage(),
               const BestSellerTile(),
               GridviewBestSeller(),
+              const SizedBox(height: 10),
             ],
           ),
         ),

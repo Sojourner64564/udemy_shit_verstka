@@ -4,14 +4,8 @@ import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/first_screen/first_page.dart';
 import 'package:udemy_shit_verstka/first_screen/geo_tile.dart';
 
-class FirstScreen extends StatefulWidget{
+class FirstScreen extends StatelessWidget{
    const FirstScreen({super.key});
-
-  @override
-  State<FirstScreen> createState() => _FirstScreenState();
-}
-
-class _FirstScreenState extends State<FirstScreen> {
 
  @override
   Widget build(BuildContext context) {

@@ -8,6 +8,7 @@ class MyColors{
   static const Color greyColor = Color.fromRGBO(150, 150, 150, 1.0);
   static const Color pageBackground = Color.fromRGBO(242, 242, 242, 1);
   static const Color greyShadow = Color.fromRGBO(150, 150, 150, 0.2);
+  static const Color lightGrey = Color.fromRGBO(200, 200, 200, 1);
 
 
 

@@ -16,7 +16,6 @@ class _GeoTileState extends State<GeoTile> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      //mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(Icons.gps_fixed_outlined,
           color: Colors.redAccent,
@@ -47,7 +46,8 @@ class _GeoTileState extends State<GeoTile> {
             setState((){
               dropDownValue = newValue!;
             });
-          }, )
+          },
+        ),
       ],
     );
   }
