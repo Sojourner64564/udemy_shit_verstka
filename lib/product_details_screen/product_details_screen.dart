@@ -3,10 +3,12 @@ import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
 import 'package:udemy_shit_verstka/cart_screen/cart_screen.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/product_details_screen/product_details_page.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.mobilePhone});
+  final MobilePhone mobilePhone;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ProductDetailsPage(),
+      body: ProductDetailsPage(mobilePhone: mobilePhone),
     );
   }
 }

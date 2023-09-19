@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/memory_selector_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/color_selector_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_buttons/active_color_button.dart';
@@ -9,7 +10,9 @@ import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memo
 
 
 class ColorAndMemorySelectorTile extends StatelessWidget {
-  ColorAndMemorySelectorTile({super.key});
+  ColorAndMemorySelectorTile({super.key, required this.mobilePhone});
+
+  final MobilePhone mobilePhone;
 
   final MemorySelectorCubit memorySelectorCubit = MemorySelectorCubit();
   final ColorSelectorCubit colorSelectorCubit = ColorSelectorCubit();
@@ -62,9 +65,9 @@ class ColorAndMemorySelectorTile extends StatelessWidget {
           bloc: memorySelectorCubit,
           builder: (context, state) {
             if (state == 0) {
-              return const ActiveMemoryButton(memory: '128',);
+              return ActiveMemoryButton(memory: mobilePhone.minMemory,);
             } else {
-              return const InactiveMemoryButton(memory: '128',);
+              return InactiveMemoryButton(memory: mobilePhone.minMemory,);
             }
           },
         ),
@@ -78,9 +81,9 @@ class ColorAndMemorySelectorTile extends StatelessWidget {
           bloc: memorySelectorCubit,
           builder: (context, state) {
             if (state == 1) {
-              return const ActiveMemoryButton(memory: '256',);
+              return ActiveMemoryButton(memory: mobilePhone.maxMemory,);
             } else {
-              return const InactiveMemoryButton(memory: '256',);
+              return InactiveMemoryButton(memory: mobilePhone.maxMemory,);
             }
           },
         ),

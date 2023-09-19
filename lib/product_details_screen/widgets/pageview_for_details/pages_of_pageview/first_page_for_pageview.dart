@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 
 class FirstPageForPageview extends StatelessWidget{
-  const FirstPageForPageview({super.key});
+  const FirstPageForPageview({super.key, required this.mobilePhone});
+  final MobilePhone mobilePhone;
 
   @override
   Widget build(BuildContext context) {
@@ -15,71 +17,82 @@ class FirstPageForPageview extends StatelessWidget{
       children: [
       SizedBox(
         width: size,
-        child: const Column(
+        child:  Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 5),
               child: Icon(Icons.memory_outlined,
               color: MyColors.greyColor,
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('Exynos 990',
+            Text(mobilePhone.cpu,
               overflow: TextOverflow.ellipsis,
-              style: TextStyles.forCharacteristicForPagePageview,),
+              softWrap: true,
+              maxLines: 2,
+              style: TextStyles.forCharacteristicForPagePageview,
+            ),
           ],
         ),
       ),
        SizedBox(
         width: size,
-        child: const Column(
+        child:  Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 5),
               child: Icon(Icons.camera_alt_outlined,
               color: MyColors.greyColor,
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('108 + 12MP',
+            Text('${mobilePhone.camera} MP',
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              maxLines: 2,
               style: TextStyles.forCharacteristicForPagePageview,),
           ],
         ),
       ),
        SizedBox(
         width: size,
-        child: const Column(
+        child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 5),
               child: Icon(Icons.radio,
               color: MyColors.greyColor,
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('8 GB',
+            Text('${mobilePhone.ram} GB',
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              maxLines: 2,
               style: TextStyles.forCharacteristicForPagePageview,),
           ],
         ),
       ),
        SizedBox(
         width: size,
-        child: const Column(
+        child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 5),
               child: Icon(Icons.sd_card_outlined,
               color: MyColors.greyColor,
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('256 GB',
+            Text('${mobilePhone.maxMemory} GB',
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              maxLines: 2,
               style: TextStyles.forCharacteristicForPagePageview,
             ),
           ],
         ),
       ),
-
     ],
     );
   }

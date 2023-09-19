@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/row_of_button_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/grey_stars_tile.dart';
@@ -12,7 +13,8 @@ import 'package:udemy_shit_verstka/product_details_screen/widgets/row_of_button_
 import 'package:udemy_shit_verstka/product_details_screen/widgets/stars_tile.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key});
+  ProductDetailsPage({super.key, required this.mobilePhone});
+  final MobilePhone mobilePhone;
 
  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
@@ -49,8 +51,8 @@ class ProductDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Row(
                         children: [
-                          const Text(
-                            'Galaxy S23 Ultra',
+                           Text(
+                            mobilePhone.productName,
                             style: TextStyles.forProductTitleDetails,
                           ),
                           const Expanded(child: SizedBox()),
@@ -70,14 +72,14 @@ class ProductDetailsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Stack(children: [
-                      Padding(
+                     Stack(children: [
+                      const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 30),
                         child: GreyStarsTile(),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: StarsTile(stars: 3,),
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: StarsTile(stars: mobilePhone.score,),
                       ),
                     ],),
                     const SizedBox(height: 15),
@@ -86,8 +88,8 @@ class ProductDetailsPage extends StatelessWidget {
                       child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
                     ),
                     const SizedBox(height: 15),
-                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
-                    const SizedBox(height: 15),
+                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton, mobilePhone: mobilePhone,),
+                    const SizedBox(height: 10),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
                       child: Text('Select color and capacity',
@@ -97,12 +99,12 @@ class ProductDetailsPage extends StatelessWidget {
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: ColorAndMemorySelectorTile(),
+                      child: ColorAndMemorySelectorTile(mobilePhone: mobilePhone,),
                     ),
-                    const SizedBox(height: 20),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: AddToCartButton(cost: '1,500'),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: AddToCartButton(cost: mobilePhone.newCost),
                     ),
                     const SizedBox(height: 15),
                   ],
@@ -136,7 +138,7 @@ class ProductDetailsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset('assets/images/s23ultra.jpg',fit: BoxFit.cover,),
+                              child: Image.asset(mobilePhone.imgAssetLink,fit: BoxFit.cover,),
                             ),
                           ),
                       );

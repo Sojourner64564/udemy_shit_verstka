@@ -35,14 +35,14 @@ class GridviewBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      mobilePhone.newCost,
+                      '\$${mobilePhone.newCost}',
                       style: TextStyles.hugeFontForCost,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      mobilePhone.oldCost,
+                      '\$${mobilePhone.oldCost}',
                       style: TextStyles.greyTextThroughLineCost,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
