@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
-import 'package:udemy_shit_verstka/cart_screen/cart_screen.dart';
-import 'package:udemy_shit_verstka/product_details_screen/product_details_page.dart';
+import 'package:udemy_shit_verstka/cart_screen/cart_page.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+class CartScreen extends StatelessWidget{
+  const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.pageBackground,
-        titleSpacing: 0,
+        centerTitle: true,
         elevation: 0,
-        leadingWidth: 0,
+        titleSpacing: 0,
         automaticallyImplyLeading: false,
-        title: Padding(
+        title:  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,36 +39,30 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const Expanded(child: SizedBox()),
               const Text(
-                'Product Details',
+                'Add address',
                 style: TextStyles.forFilterTextTwo,
               ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CartScreen()),
-                  );
-                },
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: MyColors.orangeColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Icon(
-                    Icons.shopping_bag_outlined,
-                    color: MyColors.whiteColor,
-                    size: Sizes.iconAppBarSize,
-                  ),
+              const SizedBox(width: 10),
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: MyColors.orangeColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.gps_fixed_outlined,
+                  color: MyColors.whiteColor,
+                  size: Sizes.iconAppBarSize,
                 ),
               ),
             ],
           ),
         ),
       ),
-      body: ProductDetailsPage(),
+      body: const CartPage(),
     );
   }
 }

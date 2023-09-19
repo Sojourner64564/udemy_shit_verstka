@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/MemorySelectorCubit.dart';
+import 'package:udemy_shit_verstka/product_details_screen/cubit/memory_selector_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/color_selector_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_buttons/active_color_button.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_buttons/inactive_color_button.dart';

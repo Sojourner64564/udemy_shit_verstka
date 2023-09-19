@@ -84,4 +84,39 @@ class TextStyles{
     fontWeight: FontWeight.w700,
     color: MyColors.whiteColor,
   );
+  static const TextStyle bigMyCart = TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.w700,
+    color: MyColors.deepBlueColor,
+  );
+  static const TextStyle forSmallLightTextAtCart = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: MyColors.whiteColor,
+  );
+  static const TextStyle forSmallLightButLittleWieghtTextAtCart = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: MyColors.whiteColor,
+  );
+  static const TextStyle forCheckout = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: MyColors.whiteColor,
+  );
+  static const TextStyle forProductInCart = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: MyColors.whiteColor,
+  );
+  static const TextStyle forCostOfProductInCart = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: MyColors.orangeColor,
+  );
+  static const TextStyle forAmountOfProductInCart = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    color: MyColors.whiteColor,
+  );
 }

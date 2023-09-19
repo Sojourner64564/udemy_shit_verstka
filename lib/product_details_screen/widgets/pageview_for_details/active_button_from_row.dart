@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
 
 class ActiveButtonFromRow extends StatelessWidget{

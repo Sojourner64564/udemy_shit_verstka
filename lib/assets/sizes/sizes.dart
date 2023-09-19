@@ -6,4 +6,5 @@ class Sizes{
   static const double iconFavoriteItemButtonSize = 13;
   static const double iconShaffleItemButtondropdownSize = 30;
   static const double forCharacteristicForPagePageview = 35;
+  static const double amountOfProductSelectorIcon = 18;
 }
