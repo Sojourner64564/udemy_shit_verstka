@@ -17,14 +17,13 @@ class RowOfButtonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bruh = (MediaQuery.of(context).size.width-60-100)/2;
+    final bruh = (MediaQuery.of(context).size.width-60-(MediaQuery.of(context).size.width/4.1))/2;
     return BlocBuilder<AnimationOfRowButton, double>(
       bloc: animationOfRowButton,
       builder: (context, state) {
     return Stack(
       children: [
         Positioned(
-
           left: state*bruh,
             child:Container(
               height: 35,

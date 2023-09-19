@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
@@ -37,67 +38,107 @@ class ProductDetailsPage extends StatelessWidget {
                   ],
                   borderRadius: BorderRadius.circular(20),
                   color: MyColors.whiteColor),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 25),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      children: [
-                        const Text(
-                          'Galaxy Note 20 Ultra',
-                          style: TextStyles.forProductTitleDetails,
-                        ),
-                        const Expanded(child: SizedBox()),
-                        Container(
-                          width: 45,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: MyColors.deepBlueColor,
-                            borderRadius: BorderRadius.circular(10),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Galaxy Note 20 Ultra',
+                            style: TextStyles.forProductTitleDetails,
                           ),
-                          child: const Icon(
-                            Icons.favorite_outline,
-                            color: MyColors.whiteColor,
+                          const Expanded(child: SizedBox()),
+                          Container(
+                            width: 45,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: MyColors.deepBlueColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(
+                              Icons.favorite_outline,
+                              color: MyColors.whiteColor,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Text('Звёздочки'),
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
-                  ),
-                  const SizedBox(height: 15),
-                  PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
-                  const SizedBox(height: 15),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Text('Select color and capacity',
-                    style: TextStyles.forColorSelectorText,
+                    const SizedBox(height: 5),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: Text('Звёздочки'),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: ColorAndMemorySelectorTile(),
-                  ),
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: AddToCartButton(cost: '1,500'),
-                  ),
-                ],
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
+                    ),
+                    const SizedBox(height: 15),
+                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
+                    const SizedBox(height: 15),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: Text('Select color and capacity',
+                      style: TextStyles.forColorSelectorText,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: ColorAndMemorySelectorTile(),
+                    ),
+                    const SizedBox(height: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: AddToCartButton(cost: '1,500'),
+                    ),
+                    const SizedBox(height: 15),
+                  ],
+                ),
               ),
             ),
-          ],       ),
+          ],
+        ),
+         Column(
+          children: [
+            const SizedBox(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.4,
+              width: double.infinity,
+              child: CarouselSlider(
+                options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height*0.35,
+                  viewportFraction: 0.60,
+                  enlargeCenterPage: true,
+                  enlargeFactor: 0.3,
+                ),
+                items: [1,2,3,4,5].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                              color: MyColors.whiteColor,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Image.asset('assets/images/s23ultra.jpg',fit: BoxFit.cover,),
+                            ),
+                          ),
+                      );
+                    },
+                  );
+                }).toList(),
+              )
+            ),
+            const Expanded(child: SizedBox()),
+          ],),
       ],
     );
   }
