@@ -50,7 +50,7 @@ class ProductDetailsPage extends StatelessWidget {
                       child: Row(
                         children: [
                           const Text(
-                            'Galaxy Note 20 Ultra',
+                            'Galaxy S23 Ultra',
                             style: TextStyles.forProductTitleDetails,
                           ),
                           const Expanded(child: SizedBox()),

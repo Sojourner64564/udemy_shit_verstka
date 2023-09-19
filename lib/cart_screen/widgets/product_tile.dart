@@ -30,21 +30,29 @@ class ProductTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 15),
-          const Column(
+           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Galaxy S23 Ultra',
-                style: TextStyles.forProductInCart,
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.43,
+                child: const Text(
+                  'Galaxy S23 Ultra',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  softWrap: true,
+                  style: TextStyles.forProductInCart,
+                ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 '\$1500',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: TextStyles.forCostOfProductInCart,
               ),
             ],
           ),
-          const SizedBox(width: 20),
+          const Expanded(child: SizedBox(width: 20)),
           SizedBox(
             height: 70,
             width: 25,
@@ -74,7 +82,7 @@ class ProductTile extends StatelessWidget {
                         ),
                       ),
                       const Expanded(
-                          child: Center(child: SizedBox(child: Text('')))),
+                          child: SizedBox(child: Text(''))),
                       GestureDetector(
                         onTap: () {},
                         child: const Icon(
@@ -91,16 +99,18 @@ class ProductTile extends StatelessWidget {
                   height: 70,
                   width: 30,
                   child: Center(
-                      child: Expanded(
-                       child: Text(
-                        '2',
-                      style: TextStyles.forAmountOfProductInCart,
-                    ),
-                  )),
+                    child: Text(
+                     '2',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyles.forAmountOfProductInCart,
+                     ),
+                  ),
                 ),
               ],
             ),
           ),
+          const SizedBox(width: 10),
+          const Icon(Icons.delete, color: MyColors.whiteColor,),
         ],
       ),
     );
