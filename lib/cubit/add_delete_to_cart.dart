@@ -53,11 +53,20 @@ late TotalNumberCubit totalNumberCubit;
     await initCart();
   }
 
-  Future<void> deleteFromCart(String id) async {
+  Future<void> decreaseFromCart(String id) async {
     final cartBox = await Hive.openBox('myBox');
     final value = cartBox.get(id);
     if(value!=null){
       cartBox.put(id, value-1);
+    }
+    await initCart();
+  }
+
+  Future<void> deleteFromCart(String id) async {
+    final cartBox = await Hive.openBox('myBox');
+    final value = cartBox.get(id);
+    if(value!=null){
+      cartBox.put(id, value-value);
     }
     await initCart();
   }

@@ -21,6 +21,10 @@ final AddDeleteToCart addDeleteToCart;
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
 
   addToCart() => addDeleteToCart.addToCart(mobilePhone.id);
+  late final onTap = (context){
+    print('onTap Function');
+  };
+
 
   @override
   Widget build(BuildContext context) {
@@ -108,10 +112,13 @@ final AddDeleteToCart addDeleteToCart;
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Material(
+                        borderRadius: BorderRadius.circular(10),
                         child: InkWell(
-                          splashColor: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                          splashColor: MyColors.transparrantGreyForInkWell,
                             onTap: (){
                               addToCart();
+                              onTap(context);
                             },
                             child: AddToCartButton(cost: mobilePhone.newCost)),
                       ),

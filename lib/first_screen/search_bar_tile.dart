@@ -29,24 +29,29 @@ class SearchBarTile extends StatelessWidget{
             ),
           ),
           const SizedBox(width: 15),
-          GestureDetector(
-            onTap: (){
-              showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context){
-                    return ModalBottomBar();
-                  });
-            },
-            child: Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                color: MyColors.orangeColor,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child:  const Icon(Icons.dashboard_customize,
-              color: MyColors.whiteColor,
-                size: Sizes.iconSearchButtonSize,
+          Material(
+            borderRadius: BorderRadius.circular(10),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(10),
+              splashColor: MyColors.orangeColor,
+              onTap: (){
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context){
+                      return ModalBottomBar();
+                    });
+              },
+              child: Ink(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: MyColors.orangeColor,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child:  const Icon(Icons.dashboard_customize,
+                color: MyColors.whiteColor,
+                  size: Sizes.iconSearchButtonSize,
+                ),
               ),
             ),
           )

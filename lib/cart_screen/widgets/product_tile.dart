@@ -6,11 +6,15 @@ import 'package:udemy_shit_verstka/cart_screen/for_example/cart_mobile_phone.dar
 import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({super.key, required this.cartMobilePhone, required this.addDeleteToCart});
+  const ProductTile(
+      {super.key,
+      required this.cartMobilePhone,
+      required this.addDeleteToCart});
   final CartMobilePhone cartMobilePhone;
   final AddDeleteToCart addDeleteToCart;
 
   addToCart() => addDeleteToCart.addToCart(cartMobilePhone.id);
+  decreaseFromCart() => addDeleteToCart.decreaseFromCart(cartMobilePhone.id);
   deleteFromCart() => addDeleteToCart.deleteFromCart(cartMobilePhone.id);
 
   @override
@@ -30,18 +34,19 @@ class ProductTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: Padding(
                 padding: const EdgeInsets.all(3.0),
-                child: Image.asset(cartMobilePhone.imgAssetLink,
-                fit: BoxFit.cover,
+                child: Image.asset(
+                  cartMobilePhone.imgAssetLink,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           const SizedBox(width: 15),
-           Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.43,
+                width: MediaQuery.of(context).size.width * 0.43,
                 child: Text(
                   cartMobilePhone.productName,
                   overflow: TextOverflow.ellipsis,
@@ -69,7 +74,7 @@ class ProductTile extends StatelessWidget {
                   height: 70,
                   width: 30,
                   decoration: BoxDecoration(
-                    color: MyColors.transparrantGreySelector,
+                    color: MyColors.transparrantGreyForInkWell,
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
@@ -80,26 +85,39 @@ class ProductTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(height: 2),
-                      InkWell(
-                        onTap: () {
-                          addToCart();
-                        },
-                        child: const Icon(
-                          Icons.add,
-                          color: MyColors.whiteColor,
-                          size: Sizes.amountOfProductSelectorIcon,
+                      Material(
+                        color: MyColors.transparrant,
+                        child: InkWell(
+                          splashColor: MyColors.orangeColor,
+                          borderRadius: BorderRadius.circular(10),
+                          onTap: () {
+                            addToCart();
+                          },
+                          child: Ink(
+                            child: const Icon(
+                              Icons.add,
+                              color: MyColors.whiteColor,
+                              size: Sizes.amountOfProductSelectorIcon,
+                            ),
+                          ),
                         ),
                       ),
-                      const Expanded(
-                          child: SizedBox(child: Text(''))),
-                      InkWell(
-                        onTap: () {
-                          deleteFromCart();
-                        },
-                        child: const Icon(
-                          Icons.dangerous_outlined,
-                          color: MyColors.whiteColor,
-                          size: Sizes.amountOfProductSelectorIcon,
+                      const Expanded(child: SizedBox(child: Text(''))),
+                      Material(
+                        color: MyColors.transparrant,
+                        child: InkWell(
+                          splashColor: MyColors.orangeColor,
+                          borderRadius: BorderRadius.circular(10),
+                          onTap: () {
+                            decreaseFromCart();
+                          },
+                          child: Ink(
+                            child: const Icon(
+                              Icons.dangerous_outlined,
+                              color: MyColors.whiteColor,
+                              size: Sizes.amountOfProductSelectorIcon,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -112,16 +130,29 @@ class ProductTile extends StatelessWidget {
                   child: Center(
                     child: Text(
                       cartMobilePhone.amount.toString(),
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyles.forAmountOfProductInCart,
-                     ),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyles.forAmountOfProductInCart,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
           const SizedBox(width: 10),
-          const Icon(Icons.delete, color: MyColors.whiteColor,),
+          Material(
+            color: MyColors.transparrant,
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: (){
+                  deleteFromCart();
+                },
+                  splashColor: MyColors.transparrantGreyForInkWell,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Ink(
+                      child: const Icon(
+            Icons.delete,
+            color: MyColors.whiteColor,
+          ),),),),
         ],
       ),
     );

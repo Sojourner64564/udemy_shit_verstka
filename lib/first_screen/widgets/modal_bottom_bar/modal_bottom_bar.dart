@@ -32,19 +32,24 @@ class ModalBottomBar extends StatelessWidget{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: MyColors.deepBlueColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(Icons.close,
-                            color: MyColors.whiteColor,
+                      Material(
+                        borderRadius: BorderRadius.circular(10),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(10),
+                          splashColor: MyColors.transparrantGreyForInkWell,
+                          onTap: (){
+                            Navigator.of(context).pop();
+                          },
+                          child: Ink(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: MyColors.deepBlueColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(Icons.close,
+                              color: MyColors.whiteColor,
+                            ),
                           ),
                         ),
                       ),

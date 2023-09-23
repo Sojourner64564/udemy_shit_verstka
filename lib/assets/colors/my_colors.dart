@@ -9,7 +9,8 @@ class MyColors{
   static const Color pageBackground = Color.fromRGBO(242, 242, 242, 1);
   static const Color greyShadow = Color.fromRGBO(150, 150, 150, 0.2);
   static const Color lightGrey = Color.fromRGBO(200, 200, 200, 1);
-  static const Color transparrantGreySelector = Color.fromRGBO(200, 200, 200, 0.2);
+  static const Color transparrantGreyForInkWell = Color.fromRGBO(200, 200, 200, 0.2);
+  static const Color transparrant = Color.fromRGBO(200, 200, 200, 0);
 
 
 

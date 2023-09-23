@@ -8,7 +8,7 @@ class AddToCartButton extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Ink(
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(

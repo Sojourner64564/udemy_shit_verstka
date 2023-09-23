@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/first_screen/gridview_box.dart';
@@ -89,18 +90,23 @@ class GridviewBestSeller extends StatelessWidget {
           mainAxisSpacing: 10,
         ),
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ProductDetailsScreen(
-                          mobilePhone: mobilePhones[index], addDeleteToCart: addDeleteToCart,
-                        )),
-              );
-            },
-            child: GridviewBox(
-              mobilePhone: mobilePhones[index],
+          return Material(
+            borderRadius: BorderRadius.circular(10),
+            child: InkWell(
+              splashColor: MyColors.transparrantGreyForInkWell,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProductDetailsScreen(
+                            mobilePhone: mobilePhones[index], addDeleteToCart: addDeleteToCart,
+                          )),
+                );
+              },
+              child: GridviewBox(
+                mobilePhone: mobilePhones[index],
+              ),
             ),
           );
         });

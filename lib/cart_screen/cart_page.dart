@@ -8,7 +8,7 @@ import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/cubit/total_number_cubit.dart';
 
 class CartPage extends StatefulWidget {
-  CartPage({super.key, required this.addDeleteToCart});
+  const CartPage({super.key, required this.addDeleteToCart});
   final AddDeleteToCart addDeleteToCart;
 
   @override
@@ -129,20 +129,26 @@ class _CartPageState extends State<CartPage> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: GestureDetector(
-                  onTap: () {
-                    widget.addDeleteToCart.initCart();
-                  },
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: MyColors.orangeColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Text(
-                        'Checkout',
-                        style: TextStyles.forCheckout,
+                child: Material(
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    splashColor: MyColors.orangeColor,
+                    onTap: () {
+                      widget.addDeleteToCart.initCart();
+                    },
+                    child: Ink(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: MyColors.orangeColor,
+                          borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Checkout',
+                          style: TextStyles.forCheckout,
+                        ),
                       ),
                     ),
                   ),
