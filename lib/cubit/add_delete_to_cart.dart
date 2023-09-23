@@ -65,11 +65,7 @@ late TotalNumberCubit totalNumberCubit;
   Future<void> initCart() async {
     final cartBox = await Hive.openBox('myBox');
     final map = cartBox.toMap();
-    print(map.keys.toList());
-    print(map.values.toList());
-
     int count = -1;
-
     for(int i=int.parse(map.keys.toList().first);i<=int.parse(map.keys.toList().last);i++){
      /* if(map.keys.toList()[i]==i.toString()){
         mobilePhones[i].amount = map.values.toList()[i];
@@ -86,8 +82,6 @@ late TotalNumberCubit totalNumberCubit;
       if(map.keys.toList().contains('$i')){
         count++;
         mobilePhones[i].amount = map.values.toList()[count];
-        print(mobilePhones[i].amount);
-        print('$count + bruh');
       }
     }
     final cartList = <CartMobilePhone>[];
