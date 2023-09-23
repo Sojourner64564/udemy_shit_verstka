@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
+import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/first_screen/best_seller_tile.dart';
 import 'package:udemy_shit_verstka/first_screen/categorys_tile.dart';
 import 'package:udemy_shit_verstka/first_screen/gridview_best_seller.dart';
@@ -9,8 +10,10 @@ import 'package:udemy_shit_verstka/first_screen/search_bar_tile.dart';
 import 'package:udemy_shit_verstka/first_screen/select_category_tile.dart';
 
 class FirstPage extends StatelessWidget{
-  const FirstPage({super.key});
+  FirstPage({super.key});
 
+  final AddDeleteToCart addDeleteToCart = AddDeleteToCart();
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +33,7 @@ class FirstPage extends StatelessWidget{
               const HotSalesTile(),
               const HotSalesImage(),
               const BestSellerTile(),
-              GridviewBestSeller(),
+              GridviewBestSeller(addDeleteToCart: addDeleteToCart,),
               const SizedBox(height: 10),
             ],
           ),

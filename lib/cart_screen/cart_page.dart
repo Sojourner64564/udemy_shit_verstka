@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/cart_screen/for_example/cart_mobile_phone.dart';
 import 'package:udemy_shit_verstka/cart_screen/widgets/product_tile.dart';
+import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
+import 'package:udemy_shit_verstka/cubit/total_number_cubit.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+class CartPage extends StatefulWidget {
+  CartPage({super.key, required this.addDeleteToCart});
+  final AddDeleteToCart addDeleteToCart;
+
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  final TotalNumberCubit totalNumberCubit = TotalNumberCubit();
+  @override
+  void initState() {
+    widget.addDeleteToCart.totalNumberCubit = totalNumberCubit;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +57,20 @@ class CartPage extends StatelessWidget {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.40,
                   width: double.infinity,
-                  child: ListView.separated(
-                    itemCount: 20,
-                    itemBuilder: (BuildContext context, int index) {
-                      return const ProductTile();
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(height: 40);
+                  child: BlocBuilder<AddDeleteToCart, List<CartMobilePhone>>(
+                    bloc: widget.addDeleteToCart,
+                    builder: (context, state) {
+                      return ListView.separated(
+                        itemCount: state.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ProductTile(
+                              cartMobilePhone: state[index],
+                              addDeleteToCart: widget.addDeleteToCart);
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(height: 40);
+                        },
+                      );
                     },
                   ),
                 ),
@@ -55,21 +79,27 @@ class CartPage extends StatelessWidget {
               const Divider(
                 thickness: 0.3,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       'Total',
                       style: TextStyles.forSmallLightTextAtCart,
                     ),
-                    Expanded(child: SizedBox()),
-                    Text(
-                      '\$6,000',
-                      style: TextStyles.forSmallLightButLittleWieghtTextAtCart,
+                    const Expanded(child: SizedBox()),
+                    BlocBuilder<TotalNumberCubit, String>(
+                      bloc: totalNumberCubit,
+                      builder: (context, state) {
+                        return Text(
+                          '\$$state',
+                          style:
+                              TextStyles.forSmallLightButLittleWieghtTextAtCart,
+                        );
+                      },
                     ),
-                    SizedBox(width: 5),
-                    Text(
+                    const SizedBox(width: 5),
+                    const Text(
                       'us',
                       style: TextStyles.forSmallLightButLittleWieghtTextAtCart,
                     )
@@ -100,6 +130,9 @@ class CartPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: GestureDetector(
+                  onTap: () {
+                    widget.addDeleteToCart.initCart();
+                  },
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.07,
                     width: double.infinity,

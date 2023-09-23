@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:udemy_shit_verstka/first_screen/first_screen.dart';
 
 void main() {
+  Hive.initFlutter();
   runApp(const MyApp());
 }
 
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home:  FirstScreen(),
+      home:  const FirstScreen(),
     );
   }
 }

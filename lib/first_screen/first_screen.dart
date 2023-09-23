@@ -28,7 +28,7 @@ class FirstScreen extends StatelessWidget{
               )),
         ],
       ),
-      body: const FirstPage(),
+      body: FirstPage(),
     );
   }
 }

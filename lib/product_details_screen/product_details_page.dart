@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/row_of_button_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
@@ -13,11 +14,13 @@ import 'package:udemy_shit_verstka/product_details_screen/widgets/row_of_button_
 import 'package:udemy_shit_verstka/product_details_screen/widgets/stars_tile.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key, required this.mobilePhone});
+  ProductDetailsPage({super.key, required this.mobilePhone, required this.addDeleteToCart});
   final MobilePhone mobilePhone;
-
+final AddDeleteToCart addDeleteToCart;
  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
+
+  addToCart() => addDeleteToCart.addToCart(mobilePhone.id);
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +107,14 @@ class ProductDetailsPage extends StatelessWidget {
                     const SizedBox(height: 15),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: AddToCartButton(cost: mobilePhone.newCost),
+                      child: Material(
+                        child: InkWell(
+                          splashColor: Colors.blue,
+                            onTap: (){
+                              addToCart();
+                            },
+                            child: AddToCartButton(cost: mobilePhone.newCost)),
+                      ),
                     ),
                     const SizedBox(height: 15),
                   ],

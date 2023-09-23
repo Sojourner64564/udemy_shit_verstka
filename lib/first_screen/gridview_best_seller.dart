@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_shit_verstka/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/first_screen/gridview_box.dart';
 import 'package:udemy_shit_verstka/product_details_screen/product_details_screen.dart';
 
 class GridviewBestSeller extends StatelessWidget {
-  GridviewBestSeller({super.key});
+  GridviewBestSeller({super.key, required this.addDeleteToCart});
+
+  final AddDeleteToCart addDeleteToCart;
 
   final List<MobilePhone> mobilePhones = [
     MobilePhone(
+      id: '0',
+      amount: 0,
+      amountCost: 0,
       newCost: '1,213',
       oldCost: '1337',
       productName: 'Samsung Galaxy S23',
@@ -21,6 +27,9 @@ class GridviewBestSeller extends StatelessWidget {
       score: 5
     ),
     MobilePhone(
+      id: '1',
+      amount: 0,
+      amountCost: 0,
       newCost: '300',
       oldCost: '445',
       productName: 'Honor 8 Lite',
@@ -34,6 +43,9 @@ class GridviewBestSeller extends StatelessWidget {
       score: 4,
     ),
     MobilePhone(
+      id: '2',
+      amount: 0,
+      amountCost: 0,
       newCost: '230',
       oldCost: '300',
       productName: 'Samsung Galaxy Note 8',
@@ -47,6 +59,9 @@ class GridviewBestSeller extends StatelessWidget {
       score: 4,
     ),
     MobilePhone(
+      id: '3',
+      amount: 0,
+      amountCost: 0,
       newCost: '720',
       oldCost: '800',
       productName: 'Xiaomi Mi 9',
@@ -80,7 +95,7 @@ class GridviewBestSeller extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => ProductDetailsScreen(
-                          mobilePhone: mobilePhones[index],
+                          mobilePhone: mobilePhones[index], addDeleteToCart: addDeleteToCart,
                         )),
               );
             },
