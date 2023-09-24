@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:udemy_shit_verstka/cart_screen/for_example/cart_mobile_phone.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/for_example/cart_mobile_phone.dart';
 
 class TotalNumberCubit extends Cubit<String>{
   TotalNumberCubit() : super('0');

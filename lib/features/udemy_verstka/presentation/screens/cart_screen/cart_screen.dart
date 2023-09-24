@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
-import 'package:udemy_shit_verstka/cart_screen/cart_page.dart';
-import 'package:udemy_shit_verstka/cart_screen/cubit/add_delete_to_cart.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cart_page.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 
 class CartScreen extends StatelessWidget{
   const CartScreen({super.key, required this.addDeleteToCart});

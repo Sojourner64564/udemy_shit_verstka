@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:udemy_shit_verstka/cart_screen/for_example/cart_mobile_phone.dart';
-import 'package:udemy_shit_verstka/cubit/total_number_cubit.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/total_number_cubit.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/for_example/cart_mobile_phone.dart';
 
 class AddDeleteToCart extends Cubit<List<CartMobilePhone>>{
   AddDeleteToCart() : super([]);
