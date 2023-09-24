@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:udemy_shit_verstka/first_screen/first_screen.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/first_screen.dart';
 
 void main() {
   Hive.initFlutter();
