@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
-import 'package:udemy_shit_verstka/cart_screen/cubit/add_delete_to_cart.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/for_example/mobile_phone.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/gridview_box.dart';
-import 'package:udemy_shit_verstka/product_details_screen/product_details_screen.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/product_details_screen.dart';
 
 class GridviewBestSeller extends StatelessWidget {
   GridviewBestSeller({super.key, required this.addDeleteToCart});

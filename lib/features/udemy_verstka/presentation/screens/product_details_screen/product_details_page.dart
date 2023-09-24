@@ -2,16 +2,18 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
-import 'package:udemy_shit_verstka/cart_screen/cubit/add_delete_to_cart.dart';
-import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/row_of_button_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/grey_stars_tile.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/add_to_cart_button.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_and_memory_selector_tile.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/pageview_tile_device_characteristic.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/row_of_button_tile.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/stars_tile.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/cubit/row_of_button_cubit.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/add_to_cart_button.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/color_and_memory_selector_tile.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/grey_stars_tile.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/pageview_for_details/pageview_tile_device_characteristic.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/row_of_button_tile.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/stars_tile.dart';
+
+import '../cart_screen/cubit/add_delete_to_cart.dart';
+import '../first_screen/for_example/mobile_phone.dart';
+
 
 class ProductDetailsPage extends StatelessWidget {
   ProductDetailsPage({super.key, required this.mobilePhone, required this.addDeleteToCart});

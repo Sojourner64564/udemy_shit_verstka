@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
-import 'package:udemy_shit_verstka/cart_screen/cubit/add_delete_to_cart.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/best_seller_tile.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/categorys_tile.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/gridview_best_seller.dart';

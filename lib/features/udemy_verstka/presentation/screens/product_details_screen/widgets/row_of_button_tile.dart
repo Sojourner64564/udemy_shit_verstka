@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/row_of_button_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/active_button_from_row.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/inactive_button_from_row.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/pageview_for_details/active_button_from_row.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/pageview_for_details/inactive_button_from_row.dart';
+
+import '../cubit/animation_of_row_buttons_cubit.dart';
+import '../cubit/row_of_button_cubit.dart';
+
 
 class RowOfButtonTile extends StatelessWidget {
   const RowOfButtonTile({super.key, required this.rowOfButtonCubit, required this.animationOfRowButton});

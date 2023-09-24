@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
-import 'package:udemy_shit_verstka/cart_screen/cart_screen.dart';
-import 'package:udemy_shit_verstka/cart_screen/cubit/add_delete_to_cart.dart';
-import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
-import 'package:udemy_shit_verstka/product_details_screen/product_details_page.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/product_details_page.dart';
+import '../cart_screen/cart_screen.dart';
+import '../cart_screen/cubit/add_delete_to_cart.dart';
+import '../first_screen/for_example/mobile_phone.dart';
+
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key, required this.mobilePhone, required this.addDeleteToCart});

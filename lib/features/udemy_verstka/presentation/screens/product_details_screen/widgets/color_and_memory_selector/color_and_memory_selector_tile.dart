@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/memory_selector_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/cubit/color_selector_cubit.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_buttons/active_color_button.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/color_buttons/inactive_color_button.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/memory_buttons/active_memory_button.dart';
-import 'package:udemy_shit_verstka/product_details_screen/widgets/color_and_memory_selector/memory_buttons/inactive_memory_button.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/color_buttons/active_color_button.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/color_buttons/inactive_color_button.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/memory_buttons/active_memory_button.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/memory_buttons/inactive_memory_button.dart';
+import '../../../first_screen/for_example/mobile_phone.dart';
+import '../../cubit/color_selector_cubit.dart';
+import '../../cubit/memory_selector_cubit.dart';
 
 
 class ColorAndMemorySelectorTile extends StatelessWidget {
