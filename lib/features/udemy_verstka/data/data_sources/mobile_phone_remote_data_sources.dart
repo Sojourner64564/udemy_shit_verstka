@@ -1,5 +1,5 @@
-import '../../domain/entities/mobile_phone_entity.dart';
+import '../../domain/entities/mobile_phones_entity.dart';
 
-abstract class MobilePhoneRemoteDataSources{
-  Future<MobilePhoneEntity> getMobilePhone();
+abstract class MobilePhonesRemoteDataSources{
+  Future<MobilePhonesEntity> getMobilePhones();
 }

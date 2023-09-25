@@ -89,7 +89,8 @@ class GridviewBestSeller extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => ProductDetailsScreen(
                             mobilePhone: mobilePhones[index], addDeleteToCart: addDeleteToCart,
-                          )),
+                          ),
+                  ),
                 );
               },
               child: GridviewBox(
