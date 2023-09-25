@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/error/failures.dart';
 import 'package:udemy_shit_verstka/core/network/network_info.dart';
-import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phone_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/repositories/mobile_phone_repository.dart';
 
 import '../../domain/entities/mobile_phones_entity.dart';
 import '../data_sources/mobile_phone_remote_data_sources.dart';
 
+@LazySingleton(as: MobilePhonesRepository)
 class MobilePhonesRepositoryImpl extends MobilePhonesRepository{
   MobilePhonesRepositoryImpl(this.mobilePhoneRemoteDataSources, this.networkInfo);
 

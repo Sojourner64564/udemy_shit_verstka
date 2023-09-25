@@ -1,8 +1,10 @@
 
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:udemy_shit_verstka/core/injectable/injectable.config.dart';
 
-final sl = GetIt.instance;
+final getIt = GetIt.instance;
 
 @InjectableInit(
   initializerName: r'$initGetIt', // default
@@ -12,3 +14,8 @@ final sl = GetIt.instance;
 
 @InjectableInit()
 void configureDependencies() => $initGetIt(getIt);
+
+@module
+abstract class RegisterModuleConnectionChecke{
+InternetConnectionChecker get internetConnectionChecker => InternetConnectionChecker();
+}

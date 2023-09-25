@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/data/data_sources/mobile_phone_remote_data_sources.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phone_entity.dart';
 
 import '../../domain/entities/mobile_phones_entity.dart';
 
+@LazySingleton(as: MobilePhonesRemoteDataSources)
 class MobilePhonesRemoteDataSourcesImpl implements MobilePhonesRemoteDataSources{
   MobilePhonesRemoteDataSourcesImpl();
 

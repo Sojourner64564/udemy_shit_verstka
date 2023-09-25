@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/usecases/params/no_params.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phones_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/usecases/get_mobile_phone.dart';
@@ -7,6 +8,7 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/domain/usecases/get_mo
 part 'get_smartphone_grid_first_screen_event.dart';
 part 'get_smartphone_grid_first_screen_state.dart';
 
+@lazySingleton
 class GetSmartphoneGridFirstScreenBloc extends Bloc<GetSmartphoneGridFirstScreenEvent, GetSmartphoneGridFirstScreenState> {
   GetSmartphoneGridFirstScreenBloc(this.getMobilePhones, ) : super(EmptyState()) {
     on<GetGridSmartphonesEvent>(_onGetGridSmartphones);
