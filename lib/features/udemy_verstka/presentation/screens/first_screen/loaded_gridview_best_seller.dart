@@ -2,27 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/for_example/mobile_phone.dart';
-import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/gridview_box.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/first_screen/loaded_gridview_box.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/product_details_screen.dart';
+import '../../../../../core/injectable/injectable.dart';
+import '../../../domain/entities/mobile_phone_entity.dart';
+import '../../bloc/get_smartphone_grid_first_screen_bloc/get_smartphone_grid_first_screen_bloc.dart';
 
-class GridviewBestSeller extends StatelessWidget {
-  GridviewBestSeller({super.key, required this.addDeleteToCart});
+class LoadedGridviewBestSeller extends StatelessWidget {
+  LoadedGridviewBestSeller({super.key, required this.addDeleteToCart, required this.mobilePhonesEntity});
 
   final AddDeleteToCart addDeleteToCart;
-
+  final GetSmartphoneGridFirstScreenBloc getSmartphoneGridFirstScreenBloc = getIt<GetSmartphoneGridFirstScreenBloc>();
+  final List<MobilePhoneEntity> mobilePhonesEntity;
   final List<MobilePhone> mobilePhones = [
     MobilePhone(
-      id: '0',
-      newCost: '1,213',
-      oldCost: '1337',
-      productName: 'Samsung Galaxy S23',
-      imgAssetLink: 'assets/images/s23ultra.jpg',
-      cpu: 'Snapdragon 8 Gen 2',
-      camera: '108',
-      ram: '12',
-      minMemory: '256',
-      maxMemory: '1024',
-      score: 5
+        id: '0',
+        newCost: '1,213',
+        oldCost: '1337',
+        productName: 'Samsung Galaxy S23',
+        imgAssetLink: 'assets/images/s23ultra.jpg',
+        cpu: 'Snapdragon 8 Gen 2',
+        camera: '108',
+        ram: '12',
+        minMemory: '256',
+        maxMemory: '1024',
+        score: 5
     ),
     MobilePhone(
       id: '1',
@@ -69,7 +73,7 @@ class GridviewBestSeller extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: mobilePhones.length,
+        itemCount: mobilePhonesEntity.length,
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 0.80,
@@ -87,14 +91,17 @@ class GridviewBestSeller extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ProductDetailsScreen(
-                            mobilePhone: mobilePhones[index], addDeleteToCart: addDeleteToCart,
-                          ),
+                    builder: (context) =>
+                        ProductDetailsScreen(
+                          mobilePhone: mobilePhones[index],
+                          addDeleteToCart: addDeleteToCart,
+                          id: mobilePhonesEntity[index].id,
+                        ),
                   ),
                 );
               },
-              child: GridviewBox(
-                mobilePhone: mobilePhones[index],
+              child: LoadedGridviewBox(
+                mobilePhoneEntity: mobilePhonesEntity[index],
               ),
             ),
           );

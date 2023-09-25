@@ -80,6 +80,7 @@ flutter:
    - assets/images/note8.jpg
    - assets/images/honor8lite.jpg
    - assets/images/xiaomimi9.jpg
+   - assets/gifs/loading.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -16,11 +16,12 @@ import '../first_screen/for_example/mobile_phone.dart';
 
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key, required this.mobilePhone, required this.addDeleteToCart});
+  ProductDetailsPage({super.key, required this.mobilePhone, required this.addDeleteToCart, required this.id});
   final MobilePhone mobilePhone;
 final AddDeleteToCart addDeleteToCart;
  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
+  final String id;
 
   addToCart() => addDeleteToCart.addToCart(mobilePhone.id);
   late final onTap = (context){

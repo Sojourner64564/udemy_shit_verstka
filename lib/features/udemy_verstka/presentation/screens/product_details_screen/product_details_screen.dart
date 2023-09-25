@@ -9,9 +9,10 @@ import '../first_screen/for_example/mobile_phone.dart';
 
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.mobilePhone, required this.addDeleteToCart});
+  const ProductDetailsScreen({super.key, required this.mobilePhone, required this.addDeleteToCart, required this.id});
   final MobilePhone mobilePhone;
   final AddDeleteToCart addDeleteToCart;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ProductDetailsPage(mobilePhone: mobilePhone, addDeleteToCart: addDeleteToCart,),
+      body: ProductDetailsPage(mobilePhone: mobilePhone, addDeleteToCart: addDeleteToCart, id: id,),
     );
   }
 }

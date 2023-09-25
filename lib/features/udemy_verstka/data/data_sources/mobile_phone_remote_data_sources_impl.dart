@@ -40,11 +40,12 @@ class MobilePhonesRemoteDataSourcesImpl implements MobilePhonesRemoteDataSources
       )],
  );
 
-
-
-  @override
+ @override
   Future<MobilePhonesEntity> getMobilePhones() async{
-    return mobilePhonesEntity;
+   print('--------');
+    await Future.delayed(const Duration(seconds: 4));
+   print('--delayed-');
+   return mobilePhonesEntity;
   }
 
 }
