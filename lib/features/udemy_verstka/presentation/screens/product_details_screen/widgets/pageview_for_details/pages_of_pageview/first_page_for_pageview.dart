@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
-import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone_entity.dart';
 
 class FirstPageForPageview extends StatelessWidget{
   const FirstPageForPageview({super.key, required this.mobilePhone});

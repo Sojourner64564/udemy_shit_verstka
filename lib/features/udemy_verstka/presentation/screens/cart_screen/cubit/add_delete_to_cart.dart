@@ -6,7 +6,7 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/c
 class AddDeleteToCart extends Cubit<List<CartMobilePhone>>{
   AddDeleteToCart() : super([]);
 
-  final List<CartMobilePhone> mobilePhones = [
+  final List<CartMobilePhone> cartMobilePhones = [
     CartMobilePhone(
         id: '0',
         amount: 0,
@@ -76,27 +76,15 @@ late TotalNumberCubit totalNumberCubit;
     final map = cartBox.toMap();
     int count = -1;
     for(int i=int.parse(map.keys.toList().first);i<=int.parse(map.keys.toList().last);i++){
-     /* if(map.keys.toList()[i]==i.toString()){
-        mobilePhones[i].amount = map.values.toList()[i];
-      }*/
-      /*print('not circle for');
-      int myInt = 0;
-      if(map.keys.toList().contains('$i')){
-        print('circle for');
-        if(map.keys.toList()[myInt]==i.toString()){
-          mobilePhones[myInt].amount = map.values.toList()[i];
-          myInt++;
-        }
-      }*/
       if(map.keys.toList().contains('$i')){
         count++;
-        mobilePhones[i].amount = map.values.toList()[count];
+        cartMobilePhones[i].amount = map.values.toList()[count];
       }
     }
     final cartList = <CartMobilePhone>[];
-    for(int i=0;i<mobilePhones.length;i++){
-      if(mobilePhones[i].amount!=0){
-       cartList.add(mobilePhones[i]);
+    for(int i=0;i<cartMobilePhones.length;i++){
+      if(cartMobilePhones[i].amount!=0){
+       cartList.add(cartMobilePhones[i]);
       }
     }
     for(int i=0;i<cartList.length;i++){
@@ -111,8 +99,8 @@ late TotalNumberCubit totalNumberCubit;
   Future<void> clearHive() async {
     final cartBox = await Hive.openBox('myBox');
     cartBox.clear();
-    for(int i=0;i<mobilePhones.length;i++){
-      mobilePhones[i].amount = 0;
+    for(int i=0;i<cartMobilePhones.length;i++){
+      cartMobilePhones[i].amount = 0;
     }
     cartBox.close();
   }

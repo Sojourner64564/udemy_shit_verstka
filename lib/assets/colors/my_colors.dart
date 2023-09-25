@@ -11,7 +11,4 @@ class MyColors{
   static const Color lightGrey = Color.fromRGBO(200, 200, 200, 1);
   static const Color transparrantGreyForInkWell = Color.fromRGBO(200, 200, 200, 0.2);
   static const Color transparrant = Color.fromRGBO(200, 200, 200, 0);
-
-
-
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone.dart';
+import 'package:udemy_shit_verstka/first_screen/for_example/mobile_phone_entity.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/row_of_button_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
 import 'package:udemy_shit_verstka/product_details_screen/widgets/pageview_for_details/pages_of_pageview/first_page_for_pageview.dart';
