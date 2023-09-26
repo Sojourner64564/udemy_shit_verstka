@@ -17,7 +17,7 @@ import '../../bloc/get_smartphone_grid_first_screen_bloc/get_smartphone_grid_fir
 
 
 class FirstPage extends StatefulWidget {
-  FirstPage({super.key});
+  const FirstPage({super.key});
 
   @override
   State<FirstPage> createState() => _FirstPageState();

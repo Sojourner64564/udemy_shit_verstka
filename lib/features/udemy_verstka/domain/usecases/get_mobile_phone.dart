@@ -11,7 +11,7 @@ import '../repositories/mobile_phones_repository.dart';
 class GetMobilePhones extends UseCaseMobilePhone<MobilePhonesEntity, NoParams>{
 GetMobilePhones(this.mobilePhoneRepository);
 
-final MobilePhonesRepository mobilePhoneRepository;
+final GridMobilePhonesRepository mobilePhoneRepository;
 
   @override
   Future<Either<Failure, MobilePhonesEntity>> call(NoParams params) async{

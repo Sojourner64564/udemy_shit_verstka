@@ -41,7 +41,7 @@ class LoadingGridviewBox extends StatelessWidget {
                     SizedBox(width: 5),
                     Text(
                       '...',
-                      style: TextStyles.greyTextThroughLineCost,
+                      style: TextStyles.greyTextLineCost,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

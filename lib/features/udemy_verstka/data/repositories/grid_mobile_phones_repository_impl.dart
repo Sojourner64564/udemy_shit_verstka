@@ -5,13 +5,13 @@ import 'package:udemy_shit_verstka/core/network/network_info.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/repositories/mobile_phones_repository.dart';
 
 import '../../domain/entities/mobile_phones_entity.dart';
-import '../data_sources/mobile_phone_remote_data_sources.dart';
+import '../data_sources/grid_mobile_phones_remote_data_sources.dart';
 
-@LazySingleton(as: MobilePhonesRepository)
-class MobilePhonesRepositoryImpl extends MobilePhonesRepository{
-  MobilePhonesRepositoryImpl(this.mobilePhoneRemoteDataSources, this.networkInfo);
+@LazySingleton(as: GridMobilePhonesRepository)
+class GridMobilePhonesRepositoryImpl extends GridMobilePhonesRepository{
+  GridMobilePhonesRepositoryImpl(this.mobilePhoneRemoteDataSources, this.networkInfo);
 
-  final MobilePhonesRemoteDataSources mobilePhoneRemoteDataSources;
+  final GridMobilePhonesRemoteDataSources mobilePhoneRemoteDataSources;
   final NetworkInfo networkInfo;
 
   @override

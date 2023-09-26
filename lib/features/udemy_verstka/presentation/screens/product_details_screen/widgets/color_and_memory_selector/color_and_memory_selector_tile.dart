@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phones_details_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/color_buttons/active_color_button.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/color_buttons/inactive_color_button.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/color_and_memory_selector/memory_buttons/active_memory_button.dart';
@@ -10,9 +11,9 @@ import '../../cubit/memory_selector_cubit.dart';
 
 
 class ColorAndMemorySelectorTile extends StatelessWidget {
-  ColorAndMemorySelectorTile({super.key, required this.mobilePhone});
+  ColorAndMemorySelectorTile({super.key, required this.mobilePhoneDetailsEntity});
 
-  final MobilePhone mobilePhone;
+  final MobilePhoneDetailsEntity mobilePhoneDetailsEntity;
 
   final MemorySelectorCubit memorySelectorCubit = MemorySelectorCubit();
   final ColorSelectorCubit colorSelectorCubit = ColorSelectorCubit();
@@ -65,9 +66,9 @@ class ColorAndMemorySelectorTile extends StatelessWidget {
           bloc: memorySelectorCubit,
           builder: (context, state) {
             if (state == 0) {
-              return ActiveMemoryButton(memory: mobilePhone.minMemory,);
+              return ActiveMemoryButton(memory: mobilePhoneDetailsEntity.minMemory,);
             } else {
-              return InactiveMemoryButton(memory: mobilePhone.minMemory,);
+              return InactiveMemoryButton(memory: mobilePhoneDetailsEntity.minMemory,);
             }
           },
         ),
@@ -81,9 +82,9 @@ class ColorAndMemorySelectorTile extends StatelessWidget {
           bloc: memorySelectorCubit,
           builder: (context, state) {
             if (state == 1) {
-              return ActiveMemoryButton(memory: mobilePhone.maxMemory,);
+              return ActiveMemoryButton(memory: mobilePhoneDetailsEntity.maxMemory,);
             } else {
-              return InactiveMemoryButton(memory: mobilePhone.maxMemory,);
+              return InactiveMemoryButton(memory: mobilePhoneDetailsEntity.maxMemory,);
             }
           },
         ),

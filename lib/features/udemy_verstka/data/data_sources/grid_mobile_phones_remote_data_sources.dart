@@ -1,5 +1,5 @@
 import '../../domain/entities/mobile_phones_entity.dart';
 
-abstract class MobilePhonesRemoteDataSources{
+abstract class GridMobilePhonesRemoteDataSources{
   Future<MobilePhonesEntity> getMobilePhones();
 }

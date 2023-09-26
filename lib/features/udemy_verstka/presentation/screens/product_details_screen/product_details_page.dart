@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phones_details_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/cubit/animation_of_row_buttons_cubit.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/cubit/row_of_button_cubit.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/add_to_cart_button.dart';
@@ -12,18 +13,16 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/p
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/product_details_screen/widgets/stars_tile.dart';
 
 import '../cart_screen/cubit/add_delete_to_cart.dart';
-import '../first_screen/for_example/mobile_phone.dart';
 
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key, required this.mobilePhone, required this.addDeleteToCart, required this.id});
-  final MobilePhone mobilePhone;
+  ProductDetailsPage({super.key, required this.addDeleteToCart, required this.mobilePhoneDetailsEntity});
 final AddDeleteToCart addDeleteToCart;
  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
-  final String id;
+  final MobilePhoneDetailsEntity mobilePhoneDetailsEntity;
 
-  addToCart() => addDeleteToCart.addToCart(mobilePhone.id);
+  addToCart() => addDeleteToCart.addToCart(mobilePhoneDetailsEntity.id);
   late final onTap = (context){
     print('onTap Function');
   };
@@ -62,7 +61,7 @@ final AddDeleteToCart addDeleteToCart;
                       child: Row(
                         children: [
                            Text(
-                            mobilePhone.productName,
+                             mobilePhoneDetailsEntity.productName,
                             style: TextStyles.forProductTitleDetails,
                           ),
                           const Expanded(child: SizedBox()),
@@ -89,7 +88,7 @@ final AddDeleteToCart addDeleteToCart;
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: StarsTile(stars: mobilePhone.score,),
+                        child: StarsTile(stars: mobilePhoneDetailsEntity.score,),
                       ),
                     ],),
                     const SizedBox(height: 15),
@@ -98,7 +97,7 @@ final AddDeleteToCart addDeleteToCart;
                       child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
                     ),
                     const SizedBox(height: 15),
-                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton, mobilePhone: mobilePhone,),
+                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton, mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,),
                     const SizedBox(height: 10),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
@@ -109,7 +108,7 @@ final AddDeleteToCart addDeleteToCart;
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: ColorAndMemorySelectorTile(mobilePhone: mobilePhone,),
+                      child: ColorAndMemorySelectorTile(mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,),
                     ),
                     const SizedBox(height: 15),
                     Padding(
@@ -123,7 +122,7 @@ final AddDeleteToCart addDeleteToCart;
                               addToCart();
                               onTap(context);
                             },
-                            child: AddToCartButton(cost: mobilePhone.newCost)),
+                            child: AddToCartButton(cost: mobilePhoneDetailsEntity.newCost)),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -158,7 +157,7 @@ final AddDeleteToCart addDeleteToCart;
                             borderRadius: BorderRadius.circular(10),
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset(mobilePhone.imgAssetLink,fit: BoxFit.cover,),
+                              child: Image.asset(mobilePhoneDetailsEntity.imgAssetLink, fit: BoxFit.cover,),
                             ),
                           ),
                       );

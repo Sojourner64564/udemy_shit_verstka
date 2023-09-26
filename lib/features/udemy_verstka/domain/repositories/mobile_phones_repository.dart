@@ -4,6 +4,6 @@ import 'package:udemy_shit_verstka/core/error/failures.dart';
 import '../entities/mobile_phones_entity.dart';
 
 
-abstract class MobilePhonesRepository{
+abstract class GridMobilePhonesRepository{
   Future<Either<Failure, MobilePhonesEntity>> getMobilePhones();
 }

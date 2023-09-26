@@ -25,6 +25,11 @@ class TextStyles{
     fontSize: 13,
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle greyTextLineCost = TextStyle(
+    color: Colors.grey,
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle textNormal = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,

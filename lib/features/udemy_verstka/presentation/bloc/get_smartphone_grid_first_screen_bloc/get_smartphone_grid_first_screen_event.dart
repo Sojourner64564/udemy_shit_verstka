@@ -4,6 +4,7 @@ abstract class GetSmartphoneGridFirstScreenEvent extends Equatable {
   const GetSmartphoneGridFirstScreenEvent();
 }
 
+
 class GetGridSmartphonesEvent extends GetSmartphoneGridFirstScreenEvent {
 
   @override

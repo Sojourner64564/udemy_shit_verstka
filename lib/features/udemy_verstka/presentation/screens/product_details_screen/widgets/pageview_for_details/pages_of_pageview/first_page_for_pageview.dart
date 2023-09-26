@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phones_details_entity.dart';
 import '../../../../first_screen/for_example/mobile_phone.dart';
 
 class FirstPageForPageview extends StatelessWidget{
-  const FirstPageForPageview({super.key, required this.mobilePhone});
-  final MobilePhone mobilePhone;
+  const FirstPageForPageview({super.key, required this.mobilePhoneDetailsEntity});
+  final MobilePhoneDetailsEntity mobilePhoneDetailsEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class FirstPageForPageview extends StatelessWidget{
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text(mobilePhone.cpu,
+            Text(mobilePhoneDetailsEntity.cpu,
               overflow: TextOverflow.ellipsis,
               softWrap: true,
               maxLines: 2,
@@ -46,7 +47,7 @@ class FirstPageForPageview extends StatelessWidget{
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('${mobilePhone.camera} MP',
+            Text('${mobilePhoneDetailsEntity.camera} MP',
               overflow: TextOverflow.ellipsis,
               softWrap: true,
               maxLines: 2,
@@ -65,7 +66,7 @@ class FirstPageForPageview extends StatelessWidget{
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('${mobilePhone.ram} GB',
+            Text('${mobilePhoneDetailsEntity.ram} GB',
               overflow: TextOverflow.ellipsis,
               softWrap: true,
               maxLines: 2,
@@ -84,7 +85,7 @@ class FirstPageForPageview extends StatelessWidget{
                 size: Sizes.forCharacteristicForPagePageview,
               ),
             ),
-            Text('${mobilePhone.maxMemory} GB',
+            Text('${mobilePhoneDetailsEntity.maxMemory} GB',
               overflow: TextOverflow.ellipsis,
               softWrap: true,
               maxLines: 2,
