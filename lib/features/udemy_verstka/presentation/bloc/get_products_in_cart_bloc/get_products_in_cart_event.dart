@@ -5,10 +5,7 @@ abstract class GetProductsInCartEvent extends Equatable {
 }
 
 class GetCartEvent extends GetProductsInCartEvent {
-  const GetCartEvent(this.id);
-
-  final String id;
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [];
 }

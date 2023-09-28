@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/total_number_cubit.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/for_example/cart_mobile_phone.dart';
 
-class AddDeleteToCart extends Cubit<List<CartMobilePhone>>{
+class AddDeleteToCart extends Cubit<List<dynamic>>{
   AddDeleteToCart() : super([]);
 
   final List<CartMobilePhone> cartMobilePhones = [
@@ -50,25 +50,35 @@ late TotalNumberCubit totalNumberCubit;
     }else{
       cartBox.put(id, 1);
     }
-    await initCart();
+    final List<String> list = [];
+    emit(cartBox.values.toList());
+    print(cartBox.toMap());
+
+    // await initCart();
   }
 
   Future<void> decreaseFromCart(String id) async {
     final cartBox = await Hive.openBox('myBox');
     final value = cartBox.get(id);
-    if(value!=null){
+    if(value!=null && value!=0){
       cartBox.put(id, value-1);
+      final secondValue = cartBox.get(id);
+      if(secondValue==0){
+        cartBox.delete(id);
+      }
     }
-    await initCart();
+
+    print(cartBox.toMap());
+   // await initCart();
   }
 
   Future<void> deleteFromCart(String id) async {
     final cartBox = await Hive.openBox('myBox');
     final value = cartBox.get(id);
     if(value!=null){
-      cartBox.put(id, value-value);
+      cartBox.put(id, 0);
     }
-    await initCart();
+    //await initCart();
   }
 
   Future<void> initCart() async {
