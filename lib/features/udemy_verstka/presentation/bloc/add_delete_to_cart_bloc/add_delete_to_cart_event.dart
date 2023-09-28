@@ -14,12 +14,13 @@ class AddEvent extends AddDeleteToCartEvent{
 }
 
 class DecreaseEvent extends AddDeleteToCartEvent{
-  const DecreaseEvent(this.id);
+  const DecreaseEvent(this.id, this.mobilePhoneEntity);
 
   final String id;
+  final MobilePhoneEntity mobilePhoneEntity;
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id,mobilePhoneEntity];
 }
 
 class InitEvent extends AddDeleteToCartEvent{

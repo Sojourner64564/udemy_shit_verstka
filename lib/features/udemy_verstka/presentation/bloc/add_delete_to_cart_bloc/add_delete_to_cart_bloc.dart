@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/injectable/injectable.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phone_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_products_in_cart_bloc/get_products_in_cart_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_smartphone_grid_first_screen_bloc/get_smartphone_grid_first_screen_bloc.dart';
 
@@ -51,7 +52,8 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
       final secondValue = cartBox.get(id);
       if(secondValue==0){
         cartBox.delete(id);
-        getProductsInCartBloc.add(GetCartEvent());
+        getProductsInCartBloc.add(UpdateCartEvent(event.mobilePhoneEntity));
+        emit(AddDeleteLoadedState(cartBox.values.toList()));//TODO:-------------------
       }
     }
     emit(AddDeleteLoadedState(cartBox.values.toList()));

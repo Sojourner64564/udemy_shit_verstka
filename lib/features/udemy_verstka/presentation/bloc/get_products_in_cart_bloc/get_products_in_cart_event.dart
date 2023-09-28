@@ -9,3 +9,12 @@ class GetCartEvent extends GetProductsInCartEvent {
   @override
   List<Object?> get props => [];
 }
+
+class UpdateCartEvent extends GetProductsInCartEvent {
+  const UpdateCartEvent(this.mobilePhoneEntity);
+
+  final MobilePhoneEntity mobilePhoneEntity;
+
+  @override
+  List<Object?> get props => [mobilePhoneEntity];
+}

@@ -20,7 +20,7 @@ class ProductTile extends StatelessWidget {
   final AddDeleteToCartBloc addDeleteToCartBloc;
   
   addToCart() => addDeleteToCartBloc.add(AddEvent(mobilePhoneEntity.id));
-  decreaseFromCart() => addDeleteToCartBloc.add(DecreaseEvent(mobilePhoneEntity.id));
+  decreaseFromCart() => addDeleteToCartBloc.add(DecreaseEvent(mobilePhoneEntity.id, mobilePhoneEntity));
   deleteFromCart() => addDeleteToCart.deleteFromCart(mobilePhoneEntity.id);
 
   @override
