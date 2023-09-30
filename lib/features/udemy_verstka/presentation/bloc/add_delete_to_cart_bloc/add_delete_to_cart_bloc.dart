@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/injectable/injectable.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phone_entity.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phones_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_products_in_cart_bloc/get_products_in_cart_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_smartphone_grid_first_screen_bloc/get_smartphone_grid_first_screen_bloc.dart';
 
@@ -19,6 +20,45 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
     on<DecreaseEvent>(_decreaseEvent);
     on<InitEvent>(_initEvent);
   }
+  MobilePhoneEntity mobilePhoneEntity =  MobilePhoneEntity(
+    id: '2',
+    newCost: '230',
+    oldCost: '300',
+    productName: 'Samsung Galaxy Note 8',
+    imgAssetLink: 'assets/images/note8.jpg',
+  );
+
+  final List<MobilePhoneEntity> cartList = [
+    MobilePhoneEntity(
+      id: '0',
+      newCost: '1,213',
+      oldCost: '1337',
+      productName: 'Samsung Galaxy S23',
+      imgAssetLink: 'assets/images/s23ultra.jpg',
+    ),
+    MobilePhoneEntity(
+      id: '1',
+      newCost: '300',
+      oldCost: '445',
+      productName: 'Honor 8 Lite',
+      imgAssetLink: 'assets/images/honor8lite.jpg',
+    ),
+    MobilePhoneEntity(
+      id: '2',
+      newCost: '230',
+      oldCost: '300',
+      productName: 'Samsung Galaxy Note 8',
+      imgAssetLink: 'assets/images/note8.jpg',
+    ),
+    MobilePhoneEntity(
+      id: '3',
+      newCost: '720',
+      oldCost: '800',
+      productName: 'Xiaomi Mi 9',
+      imgAssetLink: 'assets/images/xiaomimi9.jpg',
+    )
+  ];
+
 
   final GetProductsInCartBloc getProductsInCartBloc = getIt<GetProductsInCartBloc>();
 

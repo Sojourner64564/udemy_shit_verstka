@@ -24,8 +24,10 @@ class _CartPageState extends State<CartPage> {
   final AddDeleteToCartBloc addDeleteToCartBloc = getIt<AddDeleteToCartBloc>();
   @override
   void initState() {
+    print('initState');
     addDeleteToCartBloc.add(const InitEvent());
     widget.addDeleteToCart.totalNumberCubit = totalNumberCubit;
+    getProductsInCartBloc.add(GetCartEvent());
     super.initState();
   }
 
@@ -172,9 +174,7 @@ class _CartPageState extends State<CartPage> {
                     splashColor: MyColors.orangeColor,
                     onTap: () {
                       getProductsInCartBloc.add(GetCartEvent());
-
-                      // widget.addDeleteToCart.initCart();
-                    },
+                      },
                     child: Ink(
                       height: MediaQuery.of(context).size.height * 0.07,
                       width: double.infinity,

@@ -40,17 +40,14 @@ class GetProductsInCartBloc extends Bloc<GetProductsInCartEvent, GetProductsInCa
   );
   final GetProductInCart getProductInCart;
   final List<MobilePhoneEntity> cartList = [];
-  final AddDeleteToCartBloc addDeleteToCartBloc = getIt<AddDeleteToCartBloc>();
 
   void _updateCartEvent(UpdateCartEvent event, Emitter<GetProductsInCartState> state) async{
     emit(LoadingState());
     final myBox = await Hive.openBox('myBox');
     final listOfValues = myBox.values.toList();
-      //addDeleteToCartBloc.add(InitEvent());
-    //mobilePhoneEntity.id = event.id;
-    final indexOf = cartList.indexOf(event.mobilePhoneEntity);
-    cartList.removeAt(indexOf);
-      emit(LoadedState(cartList, listOfValues));
+    mobilePhoneEntity = event.mobilePhoneEntity;
+    cartList.remove(mobilePhoneEntity);
+    emit(LoadedState(cartList, listOfValues));
 
   }
 
