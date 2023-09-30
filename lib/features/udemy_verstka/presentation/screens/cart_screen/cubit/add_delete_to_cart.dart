@@ -54,7 +54,6 @@ late TotalNumberCubit totalNumberCubit;
     emit(cartBox.values.toList());
     print(cartBox.toMap());
 
-    // await initCart();
   }
 
   Future<void> decreaseFromCart(String id) async {
@@ -67,9 +66,7 @@ late TotalNumberCubit totalNumberCubit;
         cartBox.delete(id);
       }
     }
-
     print(cartBox.toMap());
-   // await initCart();
   }
 
   Future<void> deleteFromCart(String id) async {
@@ -78,7 +75,6 @@ late TotalNumberCubit totalNumberCubit;
     if(value!=null){
       cartBox.put(id, 0);
     }
-    //await initCart();
   }
 
   Future<void> initCart() async {
@@ -101,7 +97,7 @@ late TotalNumberCubit totalNumberCubit;
       final intCost = int.parse(cartList[i].newCost);
       cartList[i].amountCost = (intCost * cartList[i].amount);
     }
-    totalNumberCubit.initTotalNumber(cartList);
+    //totalNumberCubit.initTotalNumber(cartList);
     emit(cartList.toList());
     cartBox.close();
   }

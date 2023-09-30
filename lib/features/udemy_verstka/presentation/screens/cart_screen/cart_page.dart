@@ -18,7 +18,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final TotalNumberCubit totalNumberCubit = TotalNumberCubit();
+  final TotalNumberCubit totalNumberCubit = getIt<TotalNumberCubit>();
   final GetProductsInCartBloc getProductsInCartBloc =
       getIt<GetProductsInCartBloc>();
   final AddDeleteToCartBloc addDeleteToCartBloc = getIt<AddDeleteToCartBloc>();
@@ -26,7 +26,7 @@ class _CartPageState extends State<CartPage> {
   void initState() {
     print('initState');
     addDeleteToCartBloc.add(const InitEvent());
-    widget.addDeleteToCart.totalNumberCubit = totalNumberCubit;
+   // widget.addDeleteToCart.totalNumberCubit = totalNumberCubit;
     getProductsInCartBloc.add(GetCartEvent());
     super.initState();
   }
@@ -63,48 +63,51 @@ class _CartPageState extends State<CartPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.40,
+                  height: MediaQuery.of(context).size.height * 0.43,
                   width: double.infinity,
                   child: BlocBuilder<GetProductsInCartBloc, GetProductsInCartState>(
                     bloc: getProductsInCartBloc,
                     builder: (context, cartState) {
-                      if (cartState is EmptyState) {
-                        return const Text(
-                          'EmptyState',
-                          style: TextStyles.smallOrangeStyle,
-                        );
-                      }
-                      if (cartState is LoadingState) {
-                        return const Text(
-                          'LoadingState',
-                          style: TextStyles.smallOrangeStyle,
-                        );
-                      }
+                      if (cartState is EmptyState) {return const Text('EmptyState', style: TextStyles.smallOrangeStyle,);}
+                      if (cartState is LoadingState) {return const Text('LoadingState',style: TextStyles.smallOrangeStyle,);}
                       if (cartState is LoadedState) {
-                        return ListView.separated(
-                          itemCount: cartState.cartList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return BlocBuilder<AddDeleteToCartBloc,
-                                AddDeleteToCartState>(
-                              bloc: addDeleteToCartBloc,
-                              builder: (context, addDeleteState) {
-                                if(addDeleteState is AddDeleteEmptyState){return const Text('AddDeleteEmptyState', style: TextStyles.smallOrangeStyle);}
-                                if(addDeleteState is AddDeleteLoadingState){return const Text('loadingTile', style: TextStyles.smallOrangeStyle);}
-                                if(addDeleteState is AddDeleteLoadedState){
-                                  return ProductTile(
-                                    mobilePhoneEntity: cartState.cartList[index],
-                                    addDeleteToCart: widget.addDeleteToCart,
-                                    amount: addDeleteState.listAmount[index].toString(),
-                                    addDeleteToCartBloc: addDeleteToCartBloc,
-                                  );
-                                }
-                                else{return const Text('ErrorState', style: TextStyles.smallOrangeStyle);}
-                              },
-                            );
+                        return ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return const LinearGradient(
+                                colors: [
+                                 MyColors.whiteColor, MyColors.whiteColor, MyColors.transparrant
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                stops: [ 0.3, 0.9, 1],
+                            ).createShader(bounds);
                           },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 40);
-                          },
+                          child: ListView.separated(
+                            itemCount: cartState.cartList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return BlocBuilder<AddDeleteToCartBloc,
+                                  AddDeleteToCartState>(
+                                bloc: addDeleteToCartBloc,
+                                builder: (context, addDeleteState) {
+                                  if(addDeleteState is AddDeleteEmptyState){return const Text('AddDeleteEmptyState',style: TextStyles.smallOrangeStyle);}
+                                  if(addDeleteState is AddDeleteLoadingState){return const Text('loadingTile',style: TextStyles.smallOrangeStyle);}
+                                  if(addDeleteState is AddDeleteLoadedState){
+                                    return ProductTile(
+                                      mobilePhoneEntity: cartState.cartList[index],
+                                      addDeleteToCart: widget.addDeleteToCart,
+                                      mobileAmount: addDeleteState.listAmount[index].toString(),
+                                      addDeleteToCartBloc: addDeleteToCartBloc,
+                                      moneySum: cartState.moneySum[index],
+                                    );
+                                  }
+                                  else{return const Text('ErrorState', style: TextStyles.smallOrangeStyle);}
+                                },
+                              );
+                            },
+                            separatorBuilder: (BuildContext context, int index) {
+                              return const SizedBox(height: 40);
+                            },
+                          ),
                         );
                       } else {
                         return const Text('ErrorState');
@@ -113,7 +116,6 @@ class _CartPageState extends State<CartPage> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               const Divider(
                 thickness: 0.3,
               ),
@@ -126,9 +128,10 @@ class _CartPageState extends State<CartPage> {
                       style: TextStyles.forSmallLightTextAtCart,
                     ),
                     const Expanded(child: SizedBox()),
-                    BlocBuilder<TotalNumberCubit, String>(
+                    BlocBuilder<TotalNumberCubit, int>(
                       bloc: totalNumberCubit,
                       builder: (context, state) {
+                        print('BUILDD');
                         return Text(
                           '\$$state',
                           style:

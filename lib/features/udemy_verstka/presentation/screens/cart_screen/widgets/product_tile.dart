@@ -12,12 +12,13 @@ class ProductTile extends StatelessWidget {
   const ProductTile(
       {super.key,
       required this.mobilePhoneEntity,
-      required this.addDeleteToCart,required this.amount, required this.addDeleteToCartBloc});
+      required this.addDeleteToCart,required this.mobileAmount, required this.addDeleteToCartBloc, required this.moneySum});
   
   final MobilePhoneEntity mobilePhoneEntity;
   final AddDeleteToCart addDeleteToCart;
-  final String amount;
+  final String mobileAmount;
   final AddDeleteToCartBloc addDeleteToCartBloc;
+  final String moneySum;
   
   addToCart() => addDeleteToCartBloc.add(AddEvent(mobilePhoneEntity.id));
   decreaseFromCart() => addDeleteToCartBloc.add(DecreaseEvent(mobilePhoneEntity.id, mobilePhoneEntity));
@@ -62,8 +63,8 @@ class ProductTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5),
-              const Text(
-                '\$ bruh',
+              Text(
+                '\$$moneySum',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: TextStyles.forCostOfProductInCart,
@@ -119,7 +120,7 @@ class ProductTile extends StatelessWidget {
                           },
                           child: Ink(
                             child: const Icon(
-                              Icons.dangerous_outlined,
+                              Icons.horizontal_rule_outlined,
                               color: MyColors.whiteColor,
                               size: Sizes.amountOfProductSelectorIcon,
                             ),
@@ -135,7 +136,7 @@ class ProductTile extends StatelessWidget {
                   width: 30,
                   child: Center(
                     child: Text(
-                      amount,
+                      mobileAmount,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyles.forAmountOfProductInCart,
                     ),

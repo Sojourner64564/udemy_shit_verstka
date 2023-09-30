@@ -20,45 +20,6 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
     on<DecreaseEvent>(_decreaseEvent);
     on<InitEvent>(_initEvent);
   }
-  MobilePhoneEntity mobilePhoneEntity =  MobilePhoneEntity(
-    id: '2',
-    newCost: '230',
-    oldCost: '300',
-    productName: 'Samsung Galaxy Note 8',
-    imgAssetLink: 'assets/images/note8.jpg',
-  );
-
-  final List<MobilePhoneEntity> cartList = [
-    MobilePhoneEntity(
-      id: '0',
-      newCost: '1,213',
-      oldCost: '1337',
-      productName: 'Samsung Galaxy S23',
-      imgAssetLink: 'assets/images/s23ultra.jpg',
-    ),
-    MobilePhoneEntity(
-      id: '1',
-      newCost: '300',
-      oldCost: '445',
-      productName: 'Honor 8 Lite',
-      imgAssetLink: 'assets/images/honor8lite.jpg',
-    ),
-    MobilePhoneEntity(
-      id: '2',
-      newCost: '230',
-      oldCost: '300',
-      productName: 'Samsung Galaxy Note 8',
-      imgAssetLink: 'assets/images/note8.jpg',
-    ),
-    MobilePhoneEntity(
-      id: '3',
-      newCost: '720',
-      oldCost: '800',
-      productName: 'Xiaomi Mi 9',
-      imgAssetLink: 'assets/images/xiaomimi9.jpg',
-    )
-  ];
-
 
   final GetProductsInCartBloc getProductsInCartBloc = getIt<GetProductsInCartBloc>();
 
@@ -71,6 +32,7 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
   void _addEvent(AddEvent event, Emitter<AddDeleteToCartState> state) async{
     emit(AddDeleteLoadingState());
     final cartBox = await Hive.openBox('myBox');
+    final List<int> moneySum = [];
     final id = event.id;
     final value = cartBox.get(id);
     if(value!=null){
@@ -78,6 +40,8 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
     }else{
       cartBox.put(id, 1);
     }
+
+    getProductsInCartBloc.add(const UpdateMoneySumEvent());
     emit(AddDeleteLoadedState(cartBox.values.toList()));
     print(cartBox.toMap());
   }
@@ -93,9 +57,10 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
       if(secondValue==0){
         cartBox.delete(id);
         getProductsInCartBloc.add(UpdateCartEvent(event.mobilePhoneEntity));
-        emit(AddDeleteLoadedState(cartBox.values.toList()));//TODO:-------------------
+        emit(AddDeleteLoadedState(cartBox.values.toList()));
       }
     }
+    getProductsInCartBloc.add(const UpdateMoneySumEvent());
     emit(AddDeleteLoadedState(cartBox.values.toList()));
     print(cartBox.toMap());
   }

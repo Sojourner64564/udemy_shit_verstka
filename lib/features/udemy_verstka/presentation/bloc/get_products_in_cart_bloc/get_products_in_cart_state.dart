@@ -19,11 +19,12 @@ class LoadingState extends GetProductsInCartState {
 }
 
 class LoadedState extends GetProductsInCartState {
-  const LoadedState(this.cartList, this.amountList);
+  const LoadedState(this.cartList, this.amountList, this.moneySum);
   final List<MobilePhoneEntity> cartList;
   final List<dynamic> amountList;
+  final List<dynamic> moneySum;
   @override
-  List<Object> get props => [cartList, amountList];
+  List<Object> get props => [cartList, amountList, moneySum];
 }
 
 class ErrorState extends GetProductsInCartState {

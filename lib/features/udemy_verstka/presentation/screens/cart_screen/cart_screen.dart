@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MyColors.pageBackground,
+        backgroundColor: MyColors.whiteColor,
         centerTitle: true,
         elevation: 0,
         titleSpacing: 0,

@@ -8,7 +8,7 @@ class ProductCartRemoteDataSourceImpl implements ProductCartRemoteDataSource{
   final List<MobilePhoneEntity> mobilePhone = [
     const MobilePhoneEntity(
     id: '0',
-    newCost: '1,213',
+    newCost: '1213',
     oldCost: '1337',
     productName: 'Samsung Galaxy S23',
     imgAssetLink: 'assets/images/s23ultra.jpg',

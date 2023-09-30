@@ -16,9 +16,10 @@ class AddDeleteLoadedState extends AddDeleteToCartState {
   const AddDeleteLoadedState(this.listAmount);
 
   final List<dynamic> listAmount;
+ // final List<dynamic> moneySum;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [listAmount];
 }
 class AddDeleteErrorState extends AddDeleteToCartState {
   @override

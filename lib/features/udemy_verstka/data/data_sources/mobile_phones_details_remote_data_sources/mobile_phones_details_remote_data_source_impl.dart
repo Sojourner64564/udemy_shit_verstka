@@ -8,7 +8,7 @@ class MobilePhonesDetailsRemoteDataSourceImpl implements MobilePhonesDetailsRemo
   final List<MobilePhoneDetailsEntity> mobilePhoneDetails = [
     const MobilePhoneDetailsEntity(
         id: '0',
-        newCost: '1,213',
+        newCost: '1213',
         oldCost: '1337',
         productName: 'Samsung Galaxy S23',
         imgAssetLink: 'assets/images/s23ultra.jpg',
