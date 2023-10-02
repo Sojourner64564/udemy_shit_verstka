@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
@@ -9,7 +10,7 @@ class LoadingGridviewBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
+    return Container(
       decoration: BoxDecoration(
         color: MyColors.whiteColor,
         borderRadius: BorderRadius.circular(10),
@@ -29,29 +30,47 @@ class LoadingGridviewBox extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Row(
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      '...',
-                      style: TextStyles.hugeFontForCost,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      '...',
-                      style: TextStyles.greyTextLineCost,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    Container(
+                      height: 15,
+                      width: MediaQuery.of(context).size.height * 0.13,
+                      color: MyColors.transparrant,
+                      child: Shimmer.fromColors(
+                        baseColor: MyColors.greyColor,
+                        highlightColor: MyColors.whiteColor,
+                        child: Container(
+                          height: 15,
+                          width: MediaQuery.of(context).size.height * 0.13,
+                          decoration: BoxDecoration(
+                            color: MyColors.greyColor,
+                            borderRadius:
+                            BorderRadius.circular(2),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  '...',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                Container(
+                  height: 15,
+                  width: MediaQuery.of(context).size.height * 0.08,
+                  color: MyColors.transparrant,
+                  child: Shimmer.fromColors(
+                    baseColor: MyColors.greyColor,
+                    highlightColor: MyColors.whiteColor,
+                    child: Container(
+                      height: 15,
+                      width: MediaQuery.of(context).size.height * 0.08,
+                      decoration: BoxDecoration(
+                        color: MyColors.greyColor,
+                        borderRadius:
+                        BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -59,28 +78,14 @@ class LoadingGridviewBox extends StatelessWidget {
           Positioned(
             right: 7,
             top: 7,
-            child: GestureDetector(
-              onTap: (){},
-              child: Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: MyColors.greyShadow,
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(50),
-                    color: MyColors.whiteColor
-                ),
-                child: const Icon(
-                  Icons.favorite_outline,
-                  size: Sizes.iconFavoriteItemButtonSize,
-                  color: MyColors.orangeColor,
-                ),
+            child: Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: MyColors.greyShadow
               ),
+
             ),
           ),
         ],

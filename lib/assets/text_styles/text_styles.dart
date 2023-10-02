@@ -124,4 +124,5 @@ class TextStyles{
     fontWeight: FontWeight.w600,
     color: MyColors.whiteColor,
   );
+
 }

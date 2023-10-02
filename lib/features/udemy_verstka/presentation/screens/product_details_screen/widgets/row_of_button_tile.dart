@@ -19,7 +19,7 @@ class RowOfButtonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bruh = (MediaQuery.of(context).size.width-60-(MediaQuery.of(context).size.width/4.1))/2;
+    final bruh = (MediaQuery.of(context).size.width-60-(MediaQuery.of(context).size.width/4.1))/2; //соотношения и тд
     return BlocBuilder<AnimationOfRowButton, double>(
       bloc: animationOfRowButton,
       builder: (context, state) {

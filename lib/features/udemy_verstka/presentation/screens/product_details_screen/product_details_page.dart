@@ -14,19 +14,20 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/p
 
 import '../cart_screen/cubit/add_delete_to_cart.dart';
 
-
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key, required this.addDeleteToCart, required this.mobilePhoneDetailsEntity});
-final AddDeleteToCart addDeleteToCart;
- final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
+  ProductDetailsPage(
+      {super.key,
+      required this.addDeleteToCart,
+      required this.mobilePhoneDetailsEntity});
+  final AddDeleteToCart addDeleteToCart;
+  final RowOfButtonCubit rowOfButtonCubit = RowOfButtonCubit();
   final AnimationOfRowButton animationOfRowButton = AnimationOfRowButton();
   final MobilePhoneDetailsEntity mobilePhoneDetailsEntity;
 
   addToCart() => addDeleteToCart.addToCart(mobilePhoneDetailsEntity.id);
-  late final onTap = (context){
+  late final onTap = (context) {
     print('onTap Function');
   };
-
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +61,8 @@ final AddDeleteToCart addDeleteToCart;
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Row(
                         children: [
-                           Text(
-                             mobilePhoneDetailsEntity.productName,
+                          Text(
+                            mobilePhoneDetailsEntity.productName,
                             style: TextStyles.forProductTitleDetails,
                           ),
                           const Expanded(child: SizedBox()),
@@ -81,34 +82,48 @@ final AddDeleteToCart addDeleteToCart;
                       ),
                     ),
                     const SizedBox(height: 5),
-                     Stack(children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: GreyStarsTile(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: StarsTile(stars: mobilePhoneDetailsEntity.score,),
-                      ),
-                    ],),
+                    Stack(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          child: GreyStarsTile(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: StarsTile(
+                            stars: mobilePhoneDetailsEntity.score,
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 15),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: RowOfButtonTile(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton,),
+                      child: RowOfButtonTile(
+                        rowOfButtonCubit: rowOfButtonCubit,
+                        animationOfRowButton: animationOfRowButton,
+                      ),
                     ),
                     const SizedBox(height: 15),
-                    PageviewTileDeviceCharacteristic(rowOfButtonCubit: rowOfButtonCubit, animationOfRowButton: animationOfRowButton, mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,),
+                    PageviewTileDeviceCharacteristic(
+                      rowOfButtonCubit: rowOfButtonCubit,
+                      animationOfRowButton: animationOfRowButton,
+                      mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,
+                    ),
                     const SizedBox(height: 10),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Text('Select color and capacity',
-                      style: TextStyles.forColorSelectorText,
+                      child: Text(
+                        'Select color and capacity',
+                        style: TextStyles.forColorSelectorText,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: ColorAndMemorySelectorTile(mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,),
+                      child: ColorAndMemorySelectorTile(
+                        mobilePhoneDetailsEntity: mobilePhoneDetailsEntity,
+                      ),
                     ),
                     const SizedBox(height: 15),
                     Padding(
@@ -118,11 +133,21 @@ final AddDeleteToCart addDeleteToCart;
                         child: InkWell(
                           borderRadius: BorderRadius.circular(10),
                           splashColor: MyColors.transparrantGreyForInkWell,
-                            onTap: (){
-                              addToCart();
-                              onTap(context);
-                            },
-                            child: AddToCartButton(cost: mobilePhoneDetailsEntity.newCost)),
+                          onTap: () {
+                            addToCart();
+                            onTap(context);
+                          },
+                          child: Ink(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: MyColors.orangeColor,
+                            ),
+                            child: AddToCartButton(
+                                cost: mobilePhoneDetailsEntity.newCost),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -132,42 +157,45 @@ final AddDeleteToCart addDeleteToCart;
             ),
           ],
         ),
-         Column(
+        Column(
           children: [
             const SizedBox(),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.4,
-              width: double.infinity,
-              child: CarouselSlider(
-                options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height*0.35,
-                  viewportFraction: 0.60,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 0.3,
-                ),
-                items: [1,2,3,4,5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: double.infinity,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    viewportFraction: 0.60,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.3,
+                  ),
+                  items: [1, 2, 3, 4, 5].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                              color: MyColors.whiteColor,
+                            color: MyColors.whiteColor,
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset(mobilePhoneDetailsEntity.imgAssetLink, fit: BoxFit.cover,),
+                              child: Image.asset(
+                                mobilePhoneDetailsEntity.imgAssetLink,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                      );
-                    },
-                  );
-                }).toList(),
-              )
-            ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                )),
             const Expanded(child: SizedBox()),
-          ],),
+          ],
+        ),
       ],
     );
   }

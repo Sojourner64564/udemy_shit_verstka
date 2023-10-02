@@ -10,7 +10,6 @@ final String memory;
       height: 30,
       width: 70,
       decoration: BoxDecoration(
-        //color: Colors.deepPurpleAccent,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(child: Text('$memory gb',

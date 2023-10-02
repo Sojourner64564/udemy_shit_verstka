@@ -5,9 +5,11 @@ import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/error/failures.dart';
+import 'package:udemy_shit_verstka/core/injectable/injectable.dart';
 import 'package:udemy_shit_verstka/core/usecases/params/params.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/entities/mobile_phone_entity.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/domain/usecases/get_product_in_cart/get_product_in_cart.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/total_number_bloc/total_number_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/total_number_cubit.dart';
 
 
@@ -26,6 +28,7 @@ class GetProductsInCartBloc extends Bloc<GetProductsInCartEvent, GetProductsInCa
   final List<MobilePhoneEntity> cartList = [];
   final List<String> moneySumList = [];
   final TotalNumberCubit totalNumberCubit;
+  final TotalNumberBloc totalNumberBloc = getIt<TotalNumberBloc>();
 
   void _updateMoneySumEvent(UpdateMoneySumEvent event, Emitter<GetProductsInCartState> state) async{
     emit(LoadingState());
@@ -41,7 +44,8 @@ class GetProductsInCartBloc extends Bloc<GetProductsInCartEvent, GetProductsInCa
       moneySumList.add((mobileAmount*id).toString());
 
     }
-    totalNumberCubit.initTotalNumber(moneySumList);
+    totalNumberBloc.add(TotalNumberGetList(moneySumList));
+    //totalNumberCubit.initTotalNumber(moneySumList);
     emit(LoadedState(cartList, listOfValues, moneySumList));
   }
 
@@ -87,7 +91,8 @@ class GetProductsInCartBloc extends Bloc<GetProductsInCartEvent, GetProductsInCa
       moneySumList.add((mobileAmount*id).toString());
 
     }
-    totalNumberCubit.initTotalNumber(moneySumList);
+    totalNumberBloc.add(TotalNumberGetList(moneySumList));
+   // totalNumberCubit.initTotalNumber(moneySumList);
     emit(LoadedState(cartList, listOfValues, moneySumList));
   }
 

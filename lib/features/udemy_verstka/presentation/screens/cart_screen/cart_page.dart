@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/text_styles/text_styles.dart';
 import 'package:udemy_shit_verstka/core/injectable/injectable.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/add_delete_to_cart_bloc/add_delete_to_cart_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_products_in_cart_bloc/get_products_in_cart_bloc.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/total_number_bloc/total_number_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/total_number_cubit.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/widgets/loading_listview.dart';
@@ -20,6 +22,7 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final TotalNumberCubit totalNumberCubit = getIt<TotalNumberCubit>();
+  final TotalNumberBloc totalNumberBloc = getIt<TotalNumberBloc>();
   final GetProductsInCartBloc getProductsInCartBloc =
       getIt<GetProductsInCartBloc>();
   final AddDeleteToCartBloc addDeleteToCartBloc = getIt<AddDeleteToCartBloc>();
@@ -128,15 +131,63 @@ class _CartPageState extends State<CartPage> {
                       style: TextStyles.forSmallLightTextAtCart,
                     ),
                     const Expanded(child: SizedBox()),
-                    BlocBuilder<TotalNumberCubit, int>(
-                      bloc: totalNumberCubit,
+                    BlocBuilder<TotalNumberBloc, TotalNumberState>(
+                      bloc: totalNumberBloc,
                       builder: (context, state) {
-                        print('BUILDD');
-                        return Text(
-                          '\$$state',
-                          style:
-                              TextStyles.forSmallLightButLittleWieghtTextAtCart,
-                        );
+                        if(state is TotalNumberInitial){
+                          return Container(
+                            width: 40,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: MyColors.greyColor,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Shimmer.fromColors(
+                              baseColor: MyColors.transparrantGreyForInkWell,
+                              highlightColor: MyColors.whiteColor,
+                              child: Container(
+                                width: 40,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: MyColors.greyColor,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        if(state is TotalNumberLoading){
+                          return Container(
+                            width: 40,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: MyColors.greyColor,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: Shimmer.fromColors(
+                              baseColor: MyColors.transparrantGreyForInkWell,
+                              highlightColor: MyColors.whiteColor,
+                              child: Container(
+                                width: 40,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: MyColors.greyColor,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        if(state is TotalNumberLoaded){
+                          return Text(
+                            '\$${state.totalAmount}',
+                            style:
+                            TextStyles.forSmallLightButLittleWieghtTextAtCart,
+                          );
+                        }
+                        else{
+                          return const Text('Error',style: TextStyles.smallOrangeStyle);
+                        }
                       },
                     ),
                     const SizedBox(width: 5),
