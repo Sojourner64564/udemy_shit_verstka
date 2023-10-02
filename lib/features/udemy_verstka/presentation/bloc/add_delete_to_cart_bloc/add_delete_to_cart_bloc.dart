@@ -32,7 +32,6 @@ class AddDeleteToCartBloc extends Bloc<AddDeleteToCartEvent, AddDeleteToCartStat
   void _addEvent(AddEvent event, Emitter<AddDeleteToCartState> state) async{
     emit(AddDeleteLoadingState());
     final cartBox = await Hive.openBox('myBox');
-    final List<int> moneySum = [];
     final id = event.id;
     final value = cartBox.get(id);
     if(value!=null){

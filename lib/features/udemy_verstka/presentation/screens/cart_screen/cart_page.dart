@@ -7,6 +7,7 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/add_
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/get_products_in_cart_bloc/get_products_in_cart_bloc.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/total_number_cubit.dart';
+import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/widgets/loading_listview.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/widgets/product_tile.dart';
 
 class CartPage extends StatefulWidget {
@@ -26,7 +27,6 @@ class _CartPageState extends State<CartPage> {
   void initState() {
     print('initState');
     addDeleteToCartBloc.add(const InitEvent());
-   // widget.addDeleteToCart.totalNumberCubit = totalNumberCubit;
     getProductsInCartBloc.add(GetCartEvent());
     super.initState();
   }
@@ -68,8 +68,8 @@ class _CartPageState extends State<CartPage> {
                   child: BlocBuilder<GetProductsInCartBloc, GetProductsInCartState>(
                     bloc: getProductsInCartBloc,
                     builder: (context, cartState) {
-                      if (cartState is EmptyState) {return const Text('EmptyState', style: TextStyles.smallOrangeStyle,);}
-                      if (cartState is LoadingState) {return const Text('LoadingState',style: TextStyles.smallOrangeStyle,);}
+                      if (cartState is EmptyState) {return const LoadingListview();}
+                      if (cartState is LoadingState) {return const LoadingListview();}
                       if (cartState is LoadedState) {
                         return ShaderMask(
                           shaderCallback: (Rect bounds) {

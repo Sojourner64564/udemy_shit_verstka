@@ -7,21 +7,24 @@ import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/bloc/add_
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/cubit/add_delete_to_cart.dart';
 import 'package:udemy_shit_verstka/features/udemy_verstka/presentation/screens/cart_screen/for_example/cart_mobile_phone.dart';
 
-
 class ProductTile extends StatelessWidget {
   const ProductTile(
       {super.key,
       required this.mobilePhoneEntity,
-      required this.addDeleteToCart,required this.mobileAmount, required this.addDeleteToCartBloc, required this.moneySum});
-  
+      required this.addDeleteToCart,
+      required this.mobileAmount,
+      required this.addDeleteToCartBloc,
+      required this.moneySum});
+
   final MobilePhoneEntity mobilePhoneEntity;
   final AddDeleteToCart addDeleteToCart;
   final String mobileAmount;
   final AddDeleteToCartBloc addDeleteToCartBloc;
   final String moneySum;
-  
+
   addToCart() => addDeleteToCartBloc.add(AddEvent(mobilePhoneEntity.id));
-  decreaseFromCart() => addDeleteToCartBloc.add(DecreaseEvent(mobilePhoneEntity.id, mobilePhoneEntity));
+  decreaseFromCart() => addDeleteToCartBloc
+      .add(DecreaseEvent(mobilePhoneEntity.id, mobilePhoneEntity));
   deleteFromCart() => addDeleteToCart.deleteFromCart(mobilePhoneEntity.id);
 
   @override
@@ -148,18 +151,21 @@ class ProductTile extends StatelessWidget {
           const SizedBox(width: 10),
           Material(
             color: MyColors.transparrant,
+            borderRadius: BorderRadius.circular(10),
+            child: InkWell(
+              onTap: () {
+                deleteFromCart();
+              },
+              splashColor: MyColors.transparrantGreyForInkWell,
               borderRadius: BorderRadius.circular(10),
-              child: InkWell(
-                onTap: (){
-                  deleteFromCart();
-                },
-                  splashColor: MyColors.transparrantGreyForInkWell,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Ink(
-                      child: const Icon(
-            Icons.delete,
-            color: MyColors.whiteColor,
-          ),),),),
+              child: Ink(
+                child: const Icon(
+                  Icons.delete,
+                  color: MyColors.whiteColor,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
