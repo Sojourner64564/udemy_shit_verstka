@@ -26,7 +26,7 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   final AddDeleteToCart addDeleteToCart = AddDeleteToCart();
 
-  final GetSmartphoneGridFirstScreenBloc getSmartphoneGridFirstScreenBloc = getIt<
+  final getSmartphoneGridFirstScreenBloc = getIt<
       GetSmartphoneGridFirstScreenBloc>();
 
   @override
@@ -45,7 +45,7 @@ class _FirstPageState extends State<FirstPage> {
           child: Column(
             children: [
               const SelectCategoryTile(),
-              CategorysTile(),
+              const CategoriesTile(),
               const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
@@ -58,9 +58,9 @@ class _FirstPageState extends State<FirstPage> {
                 bloc: getSmartphoneGridFirstScreenBloc,
                 builder: (context, state) {
                   if(state is EmptyState){
-                    return LoadingGridviewBestSeller();
+                    return const LoadingGridviewBestSeller();
                   }else if(state is LoadingState){
-                    return  LoadingGridviewBestSeller();
+                    return  const LoadingGridviewBestSeller();
                   }else if(state is LoadedState){
                     return LoadedGridviewBestSeller(addDeleteToCart: addDeleteToCart, mobilePhonesEntity: state.mobilePhonesEntity.mobilePhoneList);
                   }else{

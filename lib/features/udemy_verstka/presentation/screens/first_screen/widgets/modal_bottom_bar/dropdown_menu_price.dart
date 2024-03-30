@@ -6,11 +6,11 @@ import 'package:udemy_shit_verstka/assets/colors/my_colors.dart';
 import 'package:udemy_shit_verstka/assets/sizes/sizes.dart';
 
 
-class Animal {
+class Price {
   final int id;
   final String name;
 
-  Animal({
+  Price({
     required this.id,
     required this.name,
   });
@@ -24,37 +24,14 @@ class DroppdownMenuPrice extends StatefulWidget {
 }
 
 class _DroppdownMenuPriceState extends State<DroppdownMenuPrice> {
-  static final List<Animal> _animals = [
-    Animal(id: 1, name: "Lion"),
-    Animal(id: 2, name: "Flamingo"),
-    Animal(id: 3, name: "Hippo"),
-    Animal(id: 4, name: "Horse"),
-    Animal(id: 5, name: "Tiger"),
-    Animal(id: 6, name: "Penguin"),
-    Animal(id: 7, name: "Spider"),
-    Animal(id: 8, name: "Snake"),
-    Animal(id: 9, name: "Bear"),
-    Animal(id: 10, name: "Beaver"),
-    Animal(id: 11, name: "Cat"),
-    Animal(id: 12, name: "Fish"),
-    Animal(id: 13, name: "Rabbit"),
-    Animal(id: 14, name: "Mouse"),
-    Animal(id: 15, name: "Dog"),
-    Animal(id: 16, name: "Zebra"),
-    Animal(id: 17, name: "Cow"),
-    Animal(id: 18, name: "Frog"),
-    Animal(id: 19, name: "Blue Jay"),
-    Animal(id: 20, name: "Moose"),
-    Animal(id: 21, name: "Gecko"),
-    Animal(id: 22, name: "Kangaroo"),
-    Animal(id: 23, name: "Shark"),
-    Animal(id: 24, name: "Crocodile"),
-    Animal(id: 25, name: "Owl"),
-    Animal(id: 26, name: "Dragonfly"),
-    Animal(id: 27, name: "Dolphin"),
+  static final List<Price> _prices = [
+    Price(id: 1, name: "0p-5000p"),
+    Price(id: 2, name: "5000p-15000p"),
+    Price(id: 3, name: "15000p-45000p"),
+    Price(id: 4, name: "45000p-150000p"),
   ];
-  final _items = _animals
-      .map((animal) => MultiSelectItem<Animal>(animal, animal.name))
+  final _items = _prices
+      .map((price) => MultiSelectItem<Price>(price, price.name))
       .toList();
 
   @override
@@ -66,7 +43,7 @@ class _DroppdownMenuPriceState extends State<DroppdownMenuPrice> {
   Widget build(BuildContext context) {
     return MultiSelectDialogField(
       items: _items,
-      title: const Text("Screen Size"),
+      title: const Text("Price"),
       selectedColor: Colors.blue,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
